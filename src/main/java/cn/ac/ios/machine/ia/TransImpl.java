@@ -24,10 +24,6 @@ public class TransImpl implements Transition {
 		return this.letter;
 	}
 
-
-	
-
-
 	@Override
 	public void setSuccessor(int succ) {
 		this.successors.set(succ);

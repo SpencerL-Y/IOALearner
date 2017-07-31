@@ -7,6 +7,9 @@ public interface State {
 	Boolean isInitial(int state);
 	
 	int getIndex();
+	int getTotalApSize();
+	int getInApSize();
+	int getOutApSize();
 	BitSet getSuccessors(int letter);
 	void addTransition(int letter, int state);
 	

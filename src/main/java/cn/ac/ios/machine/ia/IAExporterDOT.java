@@ -8,7 +8,7 @@ public class IAExporterDOT {
 			System.out.println("node [shape = doublecircle]; " + IA.getInitial().getIndex() + ";");
 			System.out.println("node [shape = circle];");
 			for(int i = 0; i < IA.getStateSize(); i++){
-				for(int k = 0; k < IA.getInAPs().size() + IA.getOutAPs().size() + 2; k++){
+				for(int k = 0; k < IA.getInAPs().size() + IA.getOutAPs().size() + 1; k++){
 					if(IA.getState(i).getSuccessors(k).size() == 0){
 						continue;
 					}
@@ -21,10 +21,8 @@ public class IAExporterDOT {
 								System.out.println(" [ label = \"in:" + k + "\" ];");
 							} else if (k == IA.getTotalApSize()){
 								System.out.println(" [ label = \"out:" + "delta" + "\" ];");
-							} else if (k == IA.getTotalApSize()+1){
-								System.out.println(" [ label = \"in:" + "D" + "\" ];");
 							} else {
-								
+								;
 							}
 						}
 					}

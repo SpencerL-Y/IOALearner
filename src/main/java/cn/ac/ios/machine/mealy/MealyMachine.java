@@ -51,13 +51,11 @@ public class MealyMachine extends MachineBase {
 
 	@Override
 	public Transition makeTransition(int state, int out) {
-		// TODO Auto-generated method stub
 		return new MealyTransition(state, out);
 	}
 
 	@Override
 	public State makeState(int index) {
-		// TODO Auto-generated method stub
 		return new MealyState(this, index);
 	}
 	
