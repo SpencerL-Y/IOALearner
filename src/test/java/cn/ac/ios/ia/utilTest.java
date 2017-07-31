@@ -3,6 +3,7 @@ package cn.ac.ios.ia;
 import cn.ac.ios.machine.ia.IAExporterDOT;
 import cn.ac.ios.machine.ia.IAImpl;
 import cn.ac.ios.machine.ia.InterfaceAutomaton;
+import cn.ac.ios.machine.ia.util.UtilIA;
 import cn.ac.ios.words.Alphabet;
 
 public class utilTest {
@@ -36,6 +37,9 @@ public class utilTest {
 			System.out.println("Is quiescent.");
 		}
 		
+		if(UtilIA.alternatingSimCheck(IA, IA)){
+			System.out.println("No Problem");
+		}
 		
 	}
 
