@@ -15,7 +15,7 @@ public class IAImpl implements InterfaceAutomaton {
 	public IAImpl(APList iAps, APList oAps){
 		this.iApList = iAps;
 		this.oApList = oAps;
-		this.states = new ArrayList<>();
+		this.states = new ArrayList<State>();
 	}
 	
 	@Override
@@ -32,6 +32,7 @@ public class IAImpl implements InterfaceAutomaton {
 	@Override
 	public State createState() {
 		State state = makeState();
+		states.add(state);
 		return state;
 	}
 

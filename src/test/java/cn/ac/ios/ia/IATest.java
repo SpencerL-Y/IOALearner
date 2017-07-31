@@ -1,5 +1,6 @@
 package cn.ac.ios.ia;
 
+import cn.ac.ios.machine.ia.IAExporterDOT;
 import cn.ac.ios.machine.ia.IAImpl;
 import cn.ac.ios.machine.ia.InterfaceAutomaton;
 import cn.ac.ios.words.Alphabet;
@@ -29,7 +30,7 @@ public class IATest {
 		IA.getState(2).addTransition(input.getAPSize()+1, 3);
 		
 		
-		
+		IAExporterDOT.export(IA);
 	}
 
 }

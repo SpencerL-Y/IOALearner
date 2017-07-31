@@ -18,7 +18,6 @@ package cn.ac.ios.mealy;
 
 import cn.ac.ios.learner.table.mealy.LearnerMealyTable;
 import cn.ac.ios.machine.Machine;
-import cn.ac.ios.machine.mealy.MealyMachine;
 import cn.ac.ios.oracle.EquivalenceOracle;
 import cn.ac.ios.oracle.MembershipOracle;
 import cn.ac.ios.query.Query;

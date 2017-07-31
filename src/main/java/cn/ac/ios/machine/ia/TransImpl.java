@@ -4,12 +4,13 @@ import java.util.BitSet;
 
 public class TransImpl implements Transition {
 	
-	protected final int letter;
-	protected BitSet successors;
+	protected  int letter = -1;
+	protected  BitSet successors;
 	
-	public TransImpl(int lt){
+	public TransImpl(int lt, InterfaceAutomaton IA){
 		this.letter = lt;
-		this.successors = new BitSet();
+		this.successors = new BitSet(IA.getStateSize());
+		
 	}
 	
 	

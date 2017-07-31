@@ -14,6 +14,9 @@ public class StateImpl implements State {
 		this.index = index;
 		this.IA = automaton;
 		this.trans = new Transition[automaton.getInAPs().size() + automaton.getOutAPs().size()];
+		for(int i = 0; i < this.trans.length; i++){
+			this.trans[i] = new TransImpl(-1, IA);
+		}
 	}
 	
 	@Override
@@ -38,7 +41,7 @@ public class StateImpl implements State {
 
 	@Override
 	public void addTransition(int letter, int state) {
-		trans[letter] = new TransImpl(letter);
+		trans[letter] = new TransImpl(letter, IA);
 		trans[letter].setSuccessor(state);
 
 	}
