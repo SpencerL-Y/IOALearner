@@ -12,7 +12,8 @@ public interface InterfaceAutomaton {
 	State createState();
 	
 	int getStateSize();
-	
+	int getInApSize();
+	int getTotalApSize();
 	void setInitial(int state);
 	
 }

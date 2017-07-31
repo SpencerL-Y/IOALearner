@@ -61,4 +61,14 @@ public class IAImpl implements InterfaceAutomaton {
 	public APList getOutAPs() {
 		return this.oApList;
 	}
+
+	@Override
+	public int getInApSize() {
+		return this.getInAPs().size();
+	}
+
+	@Override
+	public int getTotalApSize() {
+		return this.getInApSize() + this.getOutAPs().size();
+	}
 }

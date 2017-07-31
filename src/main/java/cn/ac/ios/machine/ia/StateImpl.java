@@ -48,8 +48,12 @@ public class StateImpl implements State {
 
 	@Override
 	public Boolean isEnable(int letter) {
-		
-		return null;
+		for(int i = 0; i < this.getSuccessors(letter).size(); i++){
+			if(this.getSuccessors(letter).get(i)){
+				return true;
+			}
+		}
+		return false;
 	}
 
 	@Override
@@ -65,6 +69,18 @@ public class StateImpl implements State {
 	@Override
 	public BitSet getSuccessors(int letter) {
 		return this.trans[letter].getSuccessors();
+	}
+
+	@Override
+	public Boolean isQuiescent() {
+		for(int i = this.getIA().getInApSize(); 
+				i < this.getIA().getTotalApSize(); 
+				i++){
+			if(this.isEnable(i)){
+				return false;
+			}
+		}
+		return true;
 	}
 
 }

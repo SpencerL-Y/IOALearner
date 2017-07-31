@@ -12,6 +12,7 @@ public interface State {
 	
 	Boolean isEnable(int letter);
 	Boolean isInputEnable();
+	Boolean isQuiescent();
 	
 	
 }
