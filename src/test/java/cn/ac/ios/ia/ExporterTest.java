@@ -27,7 +27,7 @@ public class ExporterTest {
 		IA.getState(1).addTransition(0, 3);
 		IA.getState(2).addTransition(1, 2);
 		IA.getState(3).addTransition(0, 3);
-		IA.getState(2).addTransition(input.getAPSize()+1, 3);
+		IA.getState(2).addTransition(input.getAPSize() + 1, 3);
 		
 		
 		IAExporterDOT.export(IA);

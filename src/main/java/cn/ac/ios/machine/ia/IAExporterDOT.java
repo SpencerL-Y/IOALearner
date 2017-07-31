@@ -8,17 +8,23 @@ public class IAExporterDOT {
 			System.out.println("node [shape = doublecircle]; " + IA.getInitial().getIndex() + ";");
 			System.out.println("node [shape = circle];");
 			for(int i = 0; i < IA.getStateSize(); i++){
-				for(int k = 0; k < IA.getInAPs().size() + IA.getOutAPs().size(); k++){
+				for(int k = 0; k < IA.getInAPs().size() + IA.getOutAPs().size() + 2; k++){
 					if(IA.getState(i).getSuccessors(k).size() == 0){
 						continue;
 					}
 					for(int j = 0; j < IA.getState(i).getSuccessors(k).size(); j++){
 						if(IA.getState(i).getSuccessors(k).get(j)){
 							System.out.print(i + " -> " + j);
-							if(k >= IA.getInAPs().size()){
-								System.out.println(" [label = \"out:" + (k-IA.getInAPs().size()) + "\"];");
+							if(k >= IA.getInApSize() && k < IA.getTotalApSize()){
+								System.out.println(" [ label = \"out:" + (k-IA.getInAPs().size()) + "\" ];");
+							} else if (k < IA.getInApSize() && k >= 0){
+								System.out.println(" [ label = \"in:" + k + "\" ];");
+							} else if (k == IA.getTotalApSize()){
+								System.out.println(" [ label = \"out:" + "delta" + "\" ];");
+							} else if (k == IA.getTotalApSize()+1){
+								System.out.println(" [ label = \"in:" + "D" + "\" ];");
 							} else {
-								System.out.println(" [ label = \"in:" + k + "\"];");
+								
 							}
 						}
 					}

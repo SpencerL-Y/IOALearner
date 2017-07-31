@@ -71,4 +71,13 @@ public class IAImpl implements InterfaceAutomaton {
 	public int getTotalApSize() {
 		return this.getInApSize() + this.getOutAPs().size();
 	}
+
+	@Override
+	public void addDelta() {
+		for(int i = 0; i < this.getStateSize(); i++){
+			if(this.getState(i).isQuiescent()){
+				this.getState(i).addTransition(this.getTotalApSize(), i);
+			}
+		}
+	}
 }
