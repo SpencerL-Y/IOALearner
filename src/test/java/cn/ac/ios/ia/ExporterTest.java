@@ -1,5 +1,6 @@
 package cn.ac.ios.ia;
 
+import cn.ac.ios.machine.ia.DIAImpl;
 import cn.ac.ios.machine.ia.IAExporterDOT;
 import cn.ac.ios.machine.ia.IAImpl;
 import cn.ac.ios.machine.ia.InterfaceAutomaton;
@@ -17,7 +18,7 @@ public class ExporterTest {
 		output.addLetter(0);
 		output.addLetter(1);
 		output.addLetter(2);
-		InterfaceAutomaton IA = new IAImpl(input.getAPs(), output.getAPs());
+		InterfaceAutomaton IA = new DIAImpl(input.getAPs(), output.getAPs());
 		for(int i = 0; i < 4; i++){
 			IA.createState();
 		}
@@ -34,6 +35,7 @@ public class ExporterTest {
 		IAs.removeDelta();
 		IAExporterDOT.export(IA);
 		IAExporterDOT.export(IAs);
+		System.out.println(IA.isDeterministic());
 	}
-
+	
 }

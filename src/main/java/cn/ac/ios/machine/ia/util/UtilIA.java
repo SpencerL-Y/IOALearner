@@ -1,5 +1,6 @@
 package cn.ac.ios.machine.ia.util;
 
+import cn.ac.ios.machine.ia.IAImpl;
 import cn.ac.ios.machine.ia.InterfaceAutomaton;
 
 public class UtilIA {
@@ -53,5 +54,6 @@ public class UtilIA {
 		aIA.removeDelta(); iIA.removeDelta();
 		return result;
 	}
+	
 	
 }

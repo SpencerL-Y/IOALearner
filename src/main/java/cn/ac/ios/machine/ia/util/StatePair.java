@@ -167,5 +167,11 @@ public class StatePair {
 		assert this.IState.isInitial(this.IState.getIndex());
 		return this.iAISimCheck(grid) && this.aAISimCheck(grid);
 	}
-
+	
+	
+	
+	
+	
+	
+	
 }

@@ -49,7 +49,6 @@ public class IAImpl implements InterfaceAutomaton {
 	private State makeState(){
 		State newState = new StateImpl(this, this.states.size());
 		return newState;
-		
 	}
 
 	@Override
@@ -88,5 +87,10 @@ public class IAImpl implements InterfaceAutomaton {
 				this.getState(i).rmTransition(this.getTotalApSize());
 			}
 		}
+	}
+
+	@Override
+	public Boolean isDeterministic() {
+		return false;
 	}
 }

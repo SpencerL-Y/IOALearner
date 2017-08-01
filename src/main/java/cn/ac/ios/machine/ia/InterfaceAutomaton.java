@@ -19,4 +19,5 @@ public interface InterfaceAutomaton {
 	void removeDelta();
 	void setInitial(int state);
 	
+	Boolean isDeterministic();
 }
