@@ -29,8 +29,11 @@ public class ExporterTest {
 		IA.getState(3).addTransition(0, 3);
 		IA.getState(2).addTransition(input.getAPSize() + 1, 3);
 		
-		
+		InterfaceAutomaton IAs = IA;
+		IAs.addDelta();
+		IAs.removeDelta();
 		IAExporterDOT.export(IA);
+		IAExporterDOT.export(IAs);
 	}
 
 }

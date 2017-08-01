@@ -80,4 +80,13 @@ public class IAImpl implements InterfaceAutomaton {
 			}
 		}
 	}
+
+	@Override
+	public void removeDelta() {
+		for(int i = 0; i < this.getStateSize(); i++){
+			if(this.getState(i).isEnable(getTotalApSize())){
+				this.getState(i).rmTransition(this.getTotalApSize());
+			}
+		}
+	}
 }

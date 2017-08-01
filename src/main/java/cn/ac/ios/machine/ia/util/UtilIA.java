@@ -24,4 +24,27 @@ public class UtilIA {
 		StatePair ip = new StatePair(aIA.getInitial(), iIA.getInitial());
 		return ip.AISimCheck(grid);
 	}
+	
+	public static Boolean alternatingSimCheckWithDelta(InterfaceAutomaton oIA, InterfaceAutomaton iIA){
+		Boolean grid[][] = new Boolean[oIA.getStateSize()][iIA.getStateSize()];
+		for(int i = 0; i < oIA.getStateSize(); i++){
+			for(int j = 0; j < iIA.getStateSize(); j++){
+				grid[i][j] = false;
+			}
+		}
+		StatePair ip = new StatePair(oIA.getInitial(), iIA.getInitial());
+		return ip.alterSimCheck(grid);
+	}
+	
+	public static Boolean AISimCheckWithDelta(InterfaceAutomaton aIA, InterfaceAutomaton iIA){
+		Boolean grid[][] = new Boolean[aIA.getStateSize()][iIA.getStateSize()];
+		for(int i = 0; i < aIA.getStateSize(); i++){
+			for(int j = 0; j < iIA.getStateSize(); j++){
+				grid[i][j] = false;
+			}
+		}
+		StatePair ip = new StatePair(aIA.getInitial(), iIA.getInitial());
+		return ip.AISimCheck(grid);
+	}
+	
 }

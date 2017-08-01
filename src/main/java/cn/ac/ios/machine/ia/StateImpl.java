@@ -98,4 +98,9 @@ public class StateImpl implements State {
 		return this.getIA().getOutAPs().size();
 	}
 
+	@Override
+	public void rmTransition(int letter) {
+		this.trans[letter] = new TransImpl(-1, IA);
+	}
+
 }

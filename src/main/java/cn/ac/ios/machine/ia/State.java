@@ -12,6 +12,7 @@ public interface State {
 	int getOutApSize();
 	BitSet getSuccessors(int letter);
 	void addTransition(int letter, int state);
+	void rmTransition(int letter);
 	
 	Boolean isEnable(int letter);
 	Boolean isInputEnable();

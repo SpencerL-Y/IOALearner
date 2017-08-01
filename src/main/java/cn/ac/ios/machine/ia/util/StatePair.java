@@ -16,7 +16,7 @@ public class StatePair {
 		this.IState = i;
 	}
 	
-	public Boolean outputStep(int letter){
+	private Boolean outputStep(int letter){
 		if(this.OState.getSuccessors(letter).length() != 0){
 			if(this.IState.getSuccessors(letter).length() == 0){
 				return false;
@@ -25,7 +25,7 @@ public class StatePair {
 		return true;
 	}
 	
-	public Boolean inputStep(int letter){
+	private Boolean inputStep(int letter){
 		if(this.IState.getSuccessors(letter).length() != 0){
 			if(this.OState.getSuccessors(letter).length() == 0){
 				return false;
@@ -34,7 +34,7 @@ public class StatePair {
 		return true;
 	}
 	
-	public List<StatePair> oStepPair(int letter, Boolean grid[][]){
+	private List<StatePair> oStepPair(int letter, Boolean grid[][]){
 		assert outputStep(letter);
 		List<StatePair> tempList = new ArrayList<StatePair>();
 			if(this.OState.getSuccessors(letter).length() != 0 && 
@@ -56,7 +56,7 @@ public class StatePair {
 		return tempList;
 	}
 	
-	public List<StatePair> iStepPair(int letter, Boolean grid[][]){
+	private List<StatePair> iStepPair(int letter, Boolean grid[][]){
 		assert inputStep(letter);
 		List<StatePair> tempList = new ArrayList<StatePair>();
 			if(this.OState.getSuccessors(letter).length() != 0 && 
@@ -78,7 +78,7 @@ public class StatePair {
 		return tempList;
 	}
 	
-	public Boolean iAltSimCheck(Boolean grid[][]){
+	private Boolean iAltSimCheck(Boolean grid[][]){
 		for(int i = 0; i < this.IState.getInApSize(); i++){
 			Boolean result = this.inputStep(i);
 			if(result){
@@ -96,7 +96,7 @@ public class StatePair {
 		return true;
 	}
 	
-	public Boolean oAltSimCheck(Boolean grid[][]){
+	private Boolean oAltSimCheck(Boolean grid[][]){
 		for(int i = this.OState.getInApSize(); i < this.OState.getTotalApSize()+1; i++){
 			Boolean result = this.outputStep(i);
 			if(result){
@@ -126,7 +126,7 @@ public class StatePair {
 	
 	
 	
-	public Boolean iAISimCheck(Boolean grid[][]){
+	private Boolean iAISimCheck(Boolean grid[][]){
 		for(int i = 0; i < this.IState.getInApSize(); i++){
 			Boolean result = this.inputStep(i);
 			if(result){
@@ -144,7 +144,7 @@ public class StatePair {
 		return true;
 	}
 	
-	public Boolean aAISimCheck(Boolean grid[][]){
+	private Boolean aAISimCheck(Boolean grid[][]){
 		for(int i = 0; i < this.OState.getTotalApSize()+1; i++){
 			Boolean result = this.outputStep(i);
 			if(result){
