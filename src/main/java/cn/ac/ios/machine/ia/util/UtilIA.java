@@ -32,8 +32,12 @@ public class UtilIA {
 				grid[i][j] = false;
 			}
 		}
+		oIA.addDelta(); iIA.addDelta();
 		StatePair ip = new StatePair(oIA.getInitial(), iIA.getInitial());
-		return ip.alterSimCheck(grid);
+		Boolean result = ip.alterSimCheck(grid);
+		oIA.removeDelta(); iIA.removeDelta();
+		return result;
+		
 	}
 	
 	public static Boolean AISimCheckWithDelta(InterfaceAutomaton aIA, InterfaceAutomaton iIA){
@@ -43,8 +47,11 @@ public class UtilIA {
 				grid[i][j] = false;
 			}
 		}
+		aIA.addDelta(); iIA.addDelta();
 		StatePair ip = new StatePair(aIA.getInitial(), iIA.getInitial());
-		return ip.AISimCheck(grid);
+		Boolean result = ip.AISimCheck(grid);
+		aIA.removeDelta(); iIA.removeDelta();
+		return result;
 	}
 	
 }
