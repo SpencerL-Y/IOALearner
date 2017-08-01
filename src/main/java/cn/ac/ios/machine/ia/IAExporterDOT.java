@@ -12,7 +12,7 @@ public class IAExporterDOT {
 					if(IA.getState(i).getSuccessors(k).size() == 0){
 						continue;
 					}
-					for(int j = 0; j < IA.getState(i).getSuccessors(k).size(); j++){
+					for(int j = 0; j < IA.getState(i).getSuccessors(k).length(); j++){
 						if(IA.getState(i).getSuccessors(k).get(j)){
 							System.out.print(i + " -> " + j);
 							if(k >= IA.getInApSize() && k < IA.getTotalApSize()){

@@ -48,7 +48,7 @@ public class StateImpl implements State {
 
 	@Override
 	public Boolean isEnable(int letter) {
-		for(int i = 0; i < this.getSuccessors(letter).size(); i++){
+		for(int i = 0; i < this.getSuccessors(letter).length(); i++){
 			if(this.getSuccessors(letter).get(i)){
 				return true;
 			}

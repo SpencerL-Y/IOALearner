@@ -9,7 +9,9 @@ public class TransImpl implements Transition {
 	
 	public TransImpl(int lt, InterfaceAutomaton IA){
 		this.letter = lt;
-		this.successors = new BitSet(IA.getStateSize());
+		int num = IA.getStateSize();
+		this.successors = new BitSet(num);
+		
 		
 	}
 	
