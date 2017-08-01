@@ -13,7 +13,6 @@ public class TransImpl implements Transition {
 		
 	}
 	
-	
 	@Override
 	public BitSet getSuccessors() {
 		return this.successors;
