@@ -3,12 +3,13 @@ package cn.ac.ios.machine.ia.util;
 import cn.ac.ios.machine.ia.DIAImpl;
 import cn.ac.ios.machine.ia.InterfaceAutomaton;
 import cn.ac.ios.machine.mealy.MealyMachine;
+import cn.ac.ios.machine.mealy4ia.MMForIA;
 import cn.ac.ios.words.Alphabet;
 
 public class Converter {
 	
 	
-	public static MealyMachine IAToMM(InterfaceAutomaton IA){
+	public static MMForIA IAToMM(InterfaceAutomaton IA){
 		IA.addDelta();
 		Alphabet inputAp = new Alphabet(Integer.class);
 		Alphabet outputAp = new Alphabet(Integer.class);
@@ -16,12 +17,12 @@ public class Converter {
 		for(int inA = 0; inA < IA.getInApSize()+1; inA++){
 			inputAp.addLetter(inA);
 		}
-		//add + and -
+		//add delta, - and +
 		for(int outA = 0; outA < IA.getOutAPs().size()+3; outA++){
 			outputAp.addLetter(outA);
 		}
 		
-		MealyMachine resultMM = new MealyMachine(inputAp.getAPs(), outputAp.getAPs());
+		MMForIA resultMM = new MMForIA(inputAp.getAPs(), outputAp.getAPs());
 		for(int state = 0; state < IA.getStateSize(); state++){
 			resultMM.createState();
 		}
@@ -30,13 +31,12 @@ public class Converter {
 			cn.ac.ios.machine.ia.State tempState = IA.getState(state);
 			for(int inA = 0; inA < IA.getInApSize(); inA++){
 				if(tempState.getSuccessors(inA).cardinality() == 0){
-					//-
+					//outputAp.getAPSize()-2 is the character "-"
 					resultMM.getState(state).addTransition(inA, state, outputAp.getAPSize()-2);
 				} else {
 					for(int succ = 0; succ < tempState.getSuccessors(inA).length(); succ++){
 						if(tempState.getSuccessors(inA).get(succ)){
-							//+
-							
+							//outputAp.getAPSize()-1 is the character "+"
 							resultMM.getState(state).addTransition(inA, succ, outputAp.getAPSize()-1);
 						}
 					}
@@ -49,6 +49,7 @@ public class Converter {
 				} else {
 					for(int succ = 0; succ < tempState.getSuccessors(outA).length(); succ++){
 						if(tempState.getSuccessors(outA).get(succ)){
+							//inputAp.getAPSize()-1 is character "BigDelta"
 								resultMM.getState(state).addTransition(inputAp.getAPSize()-1, succ, outA - IA.getInApSize());	
 						}
 					}
@@ -58,7 +59,7 @@ public class Converter {
 		return resultMM;
 	}
 
-	public static InterfaceAutomaton MMToIA(MealyMachine MM){
+	public static InterfaceAutomaton MMToIA(MMForIA MM){
 		Alphabet inputAp = new Alphabet(Integer.class);
 		Alphabet outputAp = new Alphabet(Integer.class);
 		for(int i = 0; i < MM.getInAPs().size()-1; i++){

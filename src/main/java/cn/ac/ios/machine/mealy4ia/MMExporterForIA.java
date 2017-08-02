@@ -1,9 +1,7 @@
 package cn.ac.ios.machine.mealy4ia;
 
-import cn.ac.ios.machine.mealy.MealyMachine;
-
 public class MMExporterForIA {
-	public static void exporter(MealyMachine MM){
+	public static void exporter(MMForIA MM){
 		System.out.println("//Mealy Machine ");
 		System.out.println("digraph G {");
 		System.out.println("node [shape = doublecircle]; " + MM.getInitialState() + ";");

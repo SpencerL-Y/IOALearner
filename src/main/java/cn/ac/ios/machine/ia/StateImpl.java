@@ -13,6 +13,7 @@ public class StateImpl implements State {
 	public StateImpl(InterfaceAutomaton automaton, int index){
 		this.index = index;
 		this.IA = automaton;
+		//The last transition is for delta
 		this.trans = new Transition[automaton.getInAPs().size() + automaton.getOutAPs().size() + 1];
 		for(int i = 0; i < this.trans.length; i++){
 			this.trans[i] = new TransImpl(-1, IA);
