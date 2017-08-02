@@ -2,7 +2,6 @@ package cn.ac.ios.ia;
 
 import cn.ac.ios.machine.ia.DIAImpl;
 import cn.ac.ios.machine.ia.IAExporterDOT;
-import cn.ac.ios.machine.ia.IAImpl;
 import cn.ac.ios.machine.ia.InterfaceAutomaton;
 import cn.ac.ios.words.Alphabet;
 

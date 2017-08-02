@@ -1,16 +1,11 @@
 package cn.ac.ios.ia;
 
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 import cn.ac.ios.machine.ia.IAExporterDOT;
 import cn.ac.ios.machine.ia.IAImpl;
 import cn.ac.ios.machine.ia.InterfaceAutomaton;
-import cn.ac.ios.machine.ia.State;
 import cn.ac.ios.machine.ia.util.StatePair;
-import cn.ac.ios.machine.ia.util.UtilIA;
+import cn.ac.ios.machine.ia.util.SimulationChecker;
 import cn.ac.ios.words.Alphabet;
 
 public class AltSimTest {
@@ -54,10 +49,10 @@ public class AltSimTest {
 		
 		StatePair test = new StatePair(IA1.getInitial(),IA2.getInitial());
 		
-		if(UtilIA.alternatingSimCheck(IA1, IA2)){
+		if(SimulationChecker.alternatingSimCheck(IA1, IA2)){
 			System.out.println("Everything is okay");
 		}
-		if(UtilIA.AISimCheck(IA1, IA2)){
+		if(SimulationChecker.AISimCheck(IA1, IA2)){
 			System.out.println("Everything is okay");
 		}
 		

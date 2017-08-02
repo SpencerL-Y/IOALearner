@@ -1,10 +1,9 @@
 package cn.ac.ios.ia;
 
-import cn.ac.ios.machine.MachineExporterDOT;
 import cn.ac.ios.machine.ia.DIAImpl;
 import cn.ac.ios.machine.ia.IAExporterDOT;
 import cn.ac.ios.machine.ia.InterfaceAutomaton;
-import cn.ac.ios.machine.ia.util.UtilIA;
+import cn.ac.ios.machine.ia.util.Converter;
 import cn.ac.ios.machine.mealy.MealyMachine;
 import cn.ac.ios.machine.mealy4ia.MMExporterForIA;
 import cn.ac.ios.words.Alphabet;
@@ -33,10 +32,10 @@ public class IAToMMTest {
 		IA.getState(2).addTransition(input.getAPSize() + 1, 3);
 		IAExporterDOT.export(IA);
 		
-		MealyMachine M = UtilIA.IAToMM(IA);
+		MealyMachine M = Converter.IAToMM(IA);
 		M.getState(M.getInitialState()).getOutput(0);
 		MMExporterForIA.exporter(M);
 		
-		IAExporterDOT.export(UtilIA.MMToIA(M));
+		IAExporterDOT.export(Converter.MMToIA(M));
 	}
 }

@@ -6,6 +6,8 @@ public class DStateImpl extends StateImpl{
 		super(automaton, index);
 	}
 	
+	
+	
 	@Override
 	public void addTransition(int letter, int state) {
 		if(this.trans[letter].getSuccessors().cardinality() == 0){
