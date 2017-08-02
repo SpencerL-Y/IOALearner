@@ -3,7 +3,7 @@ package cn.ac.ios.machine.ia.util;
 import cn.ac.ios.machine.ia.InterfaceAutomaton;
 
 public class SimulationChecker {
-	public static Boolean alternatingSimCheck(InterfaceAutomaton oIA, InterfaceAutomaton iIA){
+	public static Boolean alternatingSimCheck(InterfaceAutomaton oIA, InterfaceAutomaton iIA, String CE){
 		Boolean grid[][] = new Boolean[oIA.getStateSize()][iIA.getStateSize()];
 		for(int i = 0; i < oIA.getStateSize(); i++){
 			for(int j = 0; j < iIA.getStateSize(); j++){
@@ -11,10 +11,10 @@ public class SimulationChecker {
 			}
 		}
 		StatePair ip = new StatePair(oIA.getInitial(), iIA.getInitial());
-		return ip.alterSimCheck(grid);
+		return ip.alterSimCheck(grid, CE);
 	}
 	
-	public static Boolean AISimCheck(InterfaceAutomaton aIA, InterfaceAutomaton iIA){
+	public static Boolean AISimCheck(InterfaceAutomaton aIA, InterfaceAutomaton iIA, String CE){
 		Boolean grid[][] = new Boolean[aIA.getStateSize()][iIA.getStateSize()];
 		for(int i = 0; i < aIA.getStateSize(); i++){
 			for(int j = 0; j < iIA.getStateSize(); j++){
@@ -22,10 +22,10 @@ public class SimulationChecker {
 			}
 		}
 		StatePair ip = new StatePair(aIA.getInitial(), iIA.getInitial());
-		return ip.AISimCheck(grid);
+		return ip.AISimCheck(grid, CE);
 	}
 	
-	public static Boolean alternatingSimCheckWithDelta(InterfaceAutomaton oIA, InterfaceAutomaton iIA){
+	public static Boolean alternatingSimCheckWithDelta(InterfaceAutomaton oIA, InterfaceAutomaton iIA, String CE){
 		Boolean grid[][] = new Boolean[oIA.getStateSize()][iIA.getStateSize()];
 		for(int i = 0; i < oIA.getStateSize(); i++){
 			for(int j = 0; j < iIA.getStateSize(); j++){
@@ -39,13 +39,13 @@ public class SimulationChecker {
 			iIA.addDelta();
 		}
 		StatePair ip = new StatePair(oIA.getInitial(), iIA.getInitial());
-		Boolean result = ip.alterSimCheck(grid);
+		Boolean result = ip.alterSimCheck(grid, CE);
 		oIA.removeDelta(); iIA.removeDelta();
 		return result;
 		
 	}
 	
-	public static Boolean AISimCheckWithDelta(InterfaceAutomaton aIA, InterfaceAutomaton iIA){
+	public static Boolean AISimCheckWithDelta(InterfaceAutomaton aIA, InterfaceAutomaton iIA, String CE){
 		Boolean grid[][] = new Boolean[aIA.getStateSize()][iIA.getStateSize()];
 		for(int i = 0; i < aIA.getStateSize(); i++){
 			for(int j = 0; j < iIA.getStateSize(); j++){
@@ -60,12 +60,12 @@ public class SimulationChecker {
 		}
 		
 		StatePair ip = new StatePair(aIA.getInitial(), iIA.getInitial());
-		Boolean result = ip.AISimCheck(grid);
+		Boolean result = ip.AISimCheck(grid, CE);
 		aIA.removeDelta(); iIA.removeDelta();
 		return result;
 	}
 	
-	public static Boolean bisimulationCheck(InterfaceAutomaton aIA, InterfaceAutomaton iIA){
+	public static Boolean bisimulationCheck(InterfaceAutomaton aIA, InterfaceAutomaton iIA, String CE){
 		Boolean grid[][] = new Boolean[aIA.getStateSize()][iIA.getStateSize()];
 		for(int i = 0; i < aIA.getStateSize(); i++){
 			for(int j = 0; j < iIA.getStateSize(); j++){
@@ -73,7 +73,7 @@ public class SimulationChecker {
 			}
 		}
 		StatePair ip = new StatePair(aIA.getInitial(), iIA.getInitial());
-		Boolean result = ip.bisimulationCheck(grid);
+		Boolean result = ip.bisimulationCheck(grid, CE);
 		return result;
 	}
 }

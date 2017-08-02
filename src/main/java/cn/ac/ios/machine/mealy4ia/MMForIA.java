@@ -5,6 +5,5 @@ import cn.ac.ios.words.APList;
 public class MMForIA extends MealyMachine{
 	public MMForIA(APList iAps, APList oAps) {
 		super(iAps, oAps);
-		
 	}
 }

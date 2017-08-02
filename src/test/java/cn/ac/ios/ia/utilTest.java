@@ -36,8 +36,8 @@ public class utilTest {
 		if(IA.getState(3).isQuiescent()){
 			System.out.println("Is quiescent.");
 		}
-		
-		if(SimulationChecker.alternatingSimCheck(IA, IA)){
+		String counterExample = "";
+		if(SimulationChecker.alternatingSimCheck(IA, IA, counterExample)){
 			System.out.println("No Problem");
 		}
 		

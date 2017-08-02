@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.ac.ios.words.APList;
-import cn.ac.ios.words.Word;
 
 public class IAImpl implements InterfaceAutomaton {
 	protected State initialState;

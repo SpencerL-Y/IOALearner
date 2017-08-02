@@ -1,7 +1,6 @@
 package cn.ac.ios.machine.ia;
 
 import cn.ac.ios.words.APList;
-import cn.ac.ios.words.Word;
 
 public interface InterfaceAutomaton {
 	APList getInAPs();
