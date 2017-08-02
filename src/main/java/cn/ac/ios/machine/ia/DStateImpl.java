@@ -6,7 +6,15 @@ public class DStateImpl extends StateImpl{
 		super(automaton, index);
 	}
 	
-	
+	@Override
+	public int getSuccessor(int letter){
+		if(this.getSuccessors(letter).cardinality() != 0){
+			return this.getSuccessors(letter).nextSetBit(0);
+		} else {
+			//System.out.println("letter not enabled");
+			return -1;
+		}
+	}
 	
 	@Override
 	public void addTransition(int letter, int state) {

@@ -104,4 +104,10 @@ public class StateImpl implements State {
 		this.trans[letter] = new TransImpl(-1, IA);
 	}
 
+	@Override
+	public int getSuccessor(int letter) {
+		System.out.println("only supported on DIA");
+		return -1;
+	}
+
 }

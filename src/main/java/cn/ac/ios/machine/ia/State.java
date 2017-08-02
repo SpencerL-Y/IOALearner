@@ -11,6 +11,7 @@ public interface State {
 	int getInApSize();
 	int getOutApSize();
 	BitSet getSuccessors(int letter);
+	int getSuccessor(int letter);
 	void addTransition(int letter, int state);
 	void rmTransition(int letter);
 	

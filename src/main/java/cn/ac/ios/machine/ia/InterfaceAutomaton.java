@@ -1,6 +1,7 @@
 package cn.ac.ios.machine.ia;
 
 import cn.ac.ios.words.APList;
+import cn.ac.ios.words.Word;
 
 public interface InterfaceAutomaton {
 	APList getInAPs();
@@ -14,6 +15,8 @@ public interface InterfaceAutomaton {
 	int getStateSize();
 	int getInApSize();
 	int getTotalApSize();
+
+	int getSuccessor(int state, int letter);
 	
 	void addDelta();
 	void removeDelta();
