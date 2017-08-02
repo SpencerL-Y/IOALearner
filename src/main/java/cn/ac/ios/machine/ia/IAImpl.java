@@ -10,12 +10,13 @@ public class IAImpl implements InterfaceAutomaton {
 	protected final APList iApList;
 	protected final APList oApList;
 	protected final List<State> states;
-	
+	protected Boolean deltaAdded;
 	
 	public IAImpl(APList iAps, APList oAps){
 		this.iApList = iAps;
 		this.oApList = oAps;
 		this.states = new ArrayList<State>();
+		this.deltaAdded = false;
 	}
 	
 	@Override
@@ -78,6 +79,7 @@ public class IAImpl implements InterfaceAutomaton {
 				this.getState(i).addTransition(this.getTotalApSize(), i);
 			}
 		}
+		this.deltaAdded = true;
 	}
 
 	@Override
@@ -87,10 +89,18 @@ public class IAImpl implements InterfaceAutomaton {
 				this.getState(i).rmTransition(this.getTotalApSize());
 			}
 		}
+		this.deltaAdded = false;
 	}
 
 	@Override
 	public Boolean isDeterministic() {
 		return false;
 	}
+
+	@Override
+	public Boolean isDeltaAdded() {
+		return this.deltaAdded;
+	}
+	
+	
 }

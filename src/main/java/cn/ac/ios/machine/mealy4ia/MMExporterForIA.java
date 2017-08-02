@@ -4,7 +4,7 @@ import cn.ac.ios.machine.mealy.MealyMachine;
 
 public class MMExporterForIA {
 	public static void exporter(MealyMachine MM){
-		System.out.println("//Interface Automaton ");
+		System.out.println("//Mealy Machine ");
 		System.out.println("digraph G {");
 		System.out.println("node [shape = doublecircle]; " + MM.getInitialState() + ";");
 		System.out.println("node [shape = circle];");
@@ -14,23 +14,23 @@ public class MMExporterForIA {
 				if(j != MM.getInAPs().size()-1){
 					if(MM.getState(i).getOutput(j) < MM.getOutAPs().size()-2){
 						System.out.println(i + " -> " + MM.getState(i).getSuccessor(j) 
-							+" [ label = " + j +"|"+ MM.getState(i).getOutput(j) + " ] ");
+							+" [ label = \"" + j +"|"+ MM.getState(i).getOutput(j) + " ] ;");
 					} else if(MM.getState(i).getOutput(j) == MM.getOutAPs().size()-2){
 							System.out.println(i + " -> " + MM.getState(i).getSuccessor(j) 
-									+" [ label = " + j +"|-" + " ] ");
+									+" [ label = \"" + j +"|-" + " \"] ;");
 					} else if(MM.getState(i).getOutput(j) == MM.getOutAPs().size()-1){
 							System.out.println(i + " -> " + MM.getState(i).getSuccessor(j) 
-									+" [ label = " + j +"|+" + " ] ");
+									+" [ label = \"" + j +"|+" + " \"] ;");
 					} else {
 						assert false;
 					}
 				} else if(j == MM.getInAPs().size()-1){
 					if(MM.getState(i).getOutput(j) == MM.getOutAPs().size()-3){
 						System.out.println(i + " -> " + MM.getState(i).getSuccessor(j) 
-								+" [ label =  D" +"|delta" + " ] ");
+								+" [ label = \"D" +"|delta" + " \"] ;");
 					} else {
 						System.out.println(i + " -> " + MM.getState(i).getSuccessor(j) 
-							+" [ label =  D" +"|"+ MM.getState(i).getOutput(j) + " ] ");
+							+" [ label = \"D" +"|"+ MM.getState(i).getOutput(j) + " \"] ;");
 					}
 				}
 			}

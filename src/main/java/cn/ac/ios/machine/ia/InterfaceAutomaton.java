@@ -20,4 +20,5 @@ public interface InterfaceAutomaton {
 	void setInitial(int state);
 	
 	Boolean isDeterministic();
+	Boolean isDeltaAdded();
 }
