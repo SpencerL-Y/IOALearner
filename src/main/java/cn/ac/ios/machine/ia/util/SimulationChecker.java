@@ -64,4 +64,16 @@ public class SimulationChecker {
 		aIA.removeDelta(); iIA.removeDelta();
 		return result;
 	}
+	
+	public static Boolean bisimulationCheck(InterfaceAutomaton aIA, InterfaceAutomaton iIA){
+		Boolean grid[][] = new Boolean[aIA.getStateSize()][iIA.getStateSize()];
+		for(int i = 0; i < aIA.getStateSize(); i++){
+			for(int j = 0; j < iIA.getStateSize(); j++){
+				grid[i][j] = false;
+			}
+		}
+		StatePair ip = new StatePair(aIA.getInitial(), iIA.getInitial());
+		Boolean result = ip.bisimulationCheck(grid);
+		return result;
+	}
 }

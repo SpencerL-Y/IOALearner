@@ -171,7 +171,46 @@ public class StatePair {
 	
 	
 	
+	private Boolean iBiSimCheck(Boolean grid[][]){
+		for(int i = 0; i < this.IState.getTotalApSize()+1; i++){
+			Boolean result = this.inputStep(i);
+			if(result){
+				for(Iterator<StatePair> itr = this.iStepPair(i,grid).iterator(); itr.hasNext();){
+					StatePair p = itr.next();
+					result = result && p.aAISimCheck(grid) && p.iAISimCheck(grid);
+					if(!result){
+						return result;
+					}
+				}
+			} else {
+				return result;
+			}
+		}
+		return true;
+	}
 	
+	private Boolean oBiSimCheck(Boolean grid[][]){
+		for(int i = 0; i < this.OState.getTotalApSize()+1; i++){
+			Boolean result = this.outputStep(i);
+			if(result){
+				for(Iterator<StatePair> itr = this.oStepPair(i, grid).iterator(); itr.hasNext();){
+					StatePair p = itr.next();
+					result = result && p.oAltSimCheck(grid) && p.iAltSimCheck(grid);
+					if(!result){
+						return result;
+					}
+				}
+			} else {
+				return result;
+			}
+		}
+		return true;
+	}
 	
+	public Boolean bisimulationCheck(Boolean grid[][]){
+		assert this.OState.isInitial(this.OState.getIndex());
+		assert this.IState.isInitial(this.IState.getIndex());
+		return this.iBiSimCheck(grid) && this.oBiSimCheck(grid);
+	}
 	
 }
