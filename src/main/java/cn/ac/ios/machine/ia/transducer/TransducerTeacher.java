@@ -4,18 +4,20 @@ import cn.ac.ios.machine.ia.DIAImpl;
 import cn.ac.ios.machine.ia.InterfaceAutomaton;
 import cn.ac.ios.machine.ia.teacher.IATeacher;
 import cn.ac.ios.machine.ia.teacher.IATeacherImpl;
-import cn.ac.ios.machine.mealy.MealyMachine;
+import cn.ac.ios.machine.ia.util.Converter;
+import cn.ac.ios.machine.ia.util.SimulationChecker;
 import cn.ac.ios.machine.mealy4ia.MMForIA;
 import cn.ac.ios.words.APList;
+import cn.ac.ios.words.Alphabet;
 import cn.ac.ios.words.Word;
 
-public class Transducer {
+public class TransducerTeacher {
 	public InterfaceAutomaton  learningPurpose;
 	public int currentState; 
 	public IATeacher teacher;
 	public APList iAp;
 	public APList oAp;
-	public Transducer (DIAImpl lp, DIAImpl tg){
+	public TransducerTeacher (DIAImpl lp, DIAImpl tg){
 		this.learningPurpose = lp;
 		this.teacher = new IATeacherImpl(tg);
 		this.currentState = lp.getInitial().getIndex();
@@ -67,10 +69,32 @@ public class Transducer {
 	
 	public String transducerEquiQuery(MMForIA hypothesis){
 		//TODO: equivalence
-		String counterExample = null;
-		
-		return counterExample;
-		
+		String[] CE = {""};
+		Boolean lpSat = SimulationChecker.AISimCheck(Converter.MMToIA(hypothesis), 
+													 this.learningPurpose, CE);
+		if(lpSat){
+			String ltgCE = this.teacher.equivalenceQuery(Converter.MMToIA(hypothesis));
+			return ltgCE;
+		} else {
+			return CE[0];
+		}
 	}
 	
+	
+	public Word getCeWordStr(Alphabet inputs, String counterexample) {
+		Word word = null;
+		do {
+			String input = counterexample;
+			String[] wordStr = input.split("");
+			int[] wordArr = new int[wordStr.length];
+			for(int index = 0; index < wordStr.length; index ++) {
+				int letter = inputs.getAPs().indexOf(wordStr[index]);
+				wordArr[index] = letter;
+			}
+			word = inputs.getArrayWord(wordArr);
+			if(word == null)	System.out.println("Illegal input, try again!");
+		}while(word == null);
+		
+		return word;
+	}
 }

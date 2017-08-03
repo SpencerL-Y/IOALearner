@@ -2,6 +2,7 @@ package cn.ac.ios.machine.ia.teacher;
 
 import cn.ac.ios.machine.ia.DIAImpl;
 import cn.ac.ios.machine.ia.InterfaceAutomaton;
+import cn.ac.ios.machine.ia.util.SimulationChecker;
 import cn.ac.ios.words.APList;
 
 public class IATeacherImpl implements IATeacher {
@@ -47,8 +48,12 @@ public class IATeacherImpl implements IATeacher {
 
 	@Override
 	public String equivalenceQuery(InterfaceAutomaton hypothesis) {
-		// TODO Auto-generated method stub
-		return null;
+		String[] CE = {""};
+		if(SimulationChecker.alternatingSimCheckWithDelta(learningTarget, hypothesis, CE)){
+			return null;
+		} else {
+			return CE[0];
+		}
 	}
 
 }
