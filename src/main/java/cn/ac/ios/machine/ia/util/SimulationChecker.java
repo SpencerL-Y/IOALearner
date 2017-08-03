@@ -40,7 +40,7 @@ public class SimulationChecker {
 		}
 		StatePair ip = new StatePair(oIA.getInitial(), iIA.getInitial());
 		Boolean result = ip.alterSimCheck(grid, CE);
-		oIA.removeDelta(); iIA.removeDelta();
+		
 		return result;
 		
 	}
@@ -61,7 +61,7 @@ public class SimulationChecker {
 		
 		StatePair ip = new StatePair(aIA.getInitial(), iIA.getInitial());
 		Boolean result = ip.AISimCheck(grid, CE);
-		aIA.removeDelta(); iIA.removeDelta();
+		
 		return result;
 	}
 	

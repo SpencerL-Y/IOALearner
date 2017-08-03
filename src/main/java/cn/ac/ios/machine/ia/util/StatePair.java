@@ -16,6 +16,14 @@ public class StatePair {
 		this.IState = i;
 	}
 	
+	private int getCEChara(int origin){
+		if(origin < this.OState.getInApSize()){
+			return origin;
+		} else {
+			return this.OState.getInApSize();
+		}
+	}
+	
 	private Boolean outputStep(int letter){
 		if(this.OState.getSuccessors(letter).length() != 0){
 			if(this.IState.getSuccessors(letter).length() == 0){
@@ -86,12 +94,12 @@ public class StatePair {
 					StatePair p = itr.next();
 					result = result && p.oAltSimCheck(grid, CE) && p.iAltSimCheck(grid, CE);
 					if(!result){
-						CE[0] = i + CE[0];
+						CE[0] = getCEChara(i) + CE[0];
 						return result;
 					}
 				}
 			} else {
-				CE[0] = i + CE[0];
+				CE[0] = getCEChara(i) + CE[0];
 				return result;
 			}
 		}
@@ -106,12 +114,12 @@ public class StatePair {
 					StatePair p = itr.next();
 					result = result && p.oAltSimCheck(grid, CE) && p.iAltSimCheck(grid, CE);
 					if(!result){
-						CE[0] = i + CE[0];
+						CE[0] = getCEChara(i) + CE[0];
 						return result;
 					}
 				}
 			} else {
-				CE[0] = i + CE[0];
+				CE[0] = getCEChara(i) + CE[0];
 				return result;
 			}
 		}
@@ -138,12 +146,12 @@ public class StatePair {
 					StatePair p = itr.next();
 					result = result && p.aAISimCheck(grid, CE) && p.iAISimCheck(grid, CE);
 					if(!result){
-						CE[0] = i + CE[0];
+						CE[0] = getCEChara(i) + CE[0];
 						return result;
 					}
 				}
 			} else {
-				CE[0] = i + CE[0];
+				CE[0] = getCEChara(i) + CE[0];
 				return result;
 			}
 		}
@@ -158,12 +166,12 @@ public class StatePair {
 					StatePair p = itr.next();
 					result = result && p.oAltSimCheck(grid,CE) && p.iAltSimCheck(grid, CE);
 					if(!result){
-						CE[0] = i + CE[0];
+						CE[0] = getCEChara(i) + CE[0];
 						return result;
 					}
 				}
 			} else {
-				CE[0] = i + CE[0];
+				CE[0] = getCEChara(i) + CE[0];
 				return result;
 			}
 		}
@@ -187,12 +195,12 @@ public class StatePair {
 					StatePair p = itr.next();
 					result = result && p.aAISimCheck(grid, CE) && p.iAISimCheck(grid,CE);
 					if(!result){
-						CE[0] = i + CE[0];
+						CE[0] = getCEChara(i) + CE[0];
 						return result;
 					}
 				}
 			} else {
-				CE[0] = i + CE[0];
+				CE[0] = getCEChara(i) + CE[0];
 				return result;
 			}
 		}
@@ -208,12 +216,12 @@ public class StatePair {
 					result = result && p.oAltSimCheck(grid, CE) && p.iAltSimCheck(grid, CE);
 					
 					if(!result){
-						CE[0] = i + CE[0];
+						CE[0] = getCEChara(i) + CE[0];
 						return result;
 					}
 				}
 			} else {
-				CE[0] = i + CE[0];
+				CE[0] = getCEChara(i) + CE[0];
 				return result;
 			}
 		}
