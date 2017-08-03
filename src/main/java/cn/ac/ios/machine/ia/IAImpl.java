@@ -74,6 +74,7 @@ public class IAImpl implements InterfaceAutomaton {
 
 	@Override
 	public void addDelta() {
+		assert this.deltaAdded = false;
 		for(int i = 0; i < this.getStateSize(); i++){
 			if(this.getState(i).isQuiescent()){
 				this.getState(i).addTransition(this.getTotalApSize(), i);
@@ -84,6 +85,7 @@ public class IAImpl implements InterfaceAutomaton {
 
 	@Override
 	public void removeDelta() {
+		assert this.deltaAdded = true;
 		for(int i = 0; i < this.getStateSize(); i++){
 			if(this.getState(i).isEnable(getTotalApSize())){
 				this.getState(i).rmTransition(this.getTotalApSize());
@@ -106,6 +108,12 @@ public class IAImpl implements InterfaceAutomaton {
 	public int getSuccessor(int state, int letter) {
 		System.out.println("get successor is only supported on DIA");
 		return -1;
+	}
+
+	@Override
+	public int getOutputLetter(int state) {
+		System.out.println("get output letter only supported on DIA");
+		return 0;
 	}
 	
 	

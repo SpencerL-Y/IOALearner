@@ -110,4 +110,19 @@ public class StateImpl implements State {
 		return -1;
 	}
 
+	@Override
+	public Boolean isOutputDetermined() {
+		Boolean flag = false;
+		for(int letter = this.getInApSize(); letter < this.getTotalApSize()+1; letter++){
+			if(this.getSuccessors(letter).cardinality() != 0){
+				if(flag){
+					return false;
+				} else {
+					flag = true;
+				}
+			}
+		}
+		return true;
+	}
+
 }
