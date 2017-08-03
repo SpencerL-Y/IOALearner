@@ -93,7 +93,6 @@ public class Converter {
 				    		          	 .getSuccessor(MM.getInAPs().size()-1));
 			}
 		}
-		resultIOA.addDelta();
 		return resultIOA;
 	}
 
