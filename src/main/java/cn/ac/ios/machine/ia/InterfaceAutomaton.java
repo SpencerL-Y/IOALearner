@@ -16,7 +16,7 @@ public interface InterfaceAutomaton {
 	int getTotalApSize();
 
 	int getSuccessor(int state, int letter);
-	
+	int getOutputLetter(int state);
 	void addDelta();
 	void removeDelta();
 	void setInitial(int state);
