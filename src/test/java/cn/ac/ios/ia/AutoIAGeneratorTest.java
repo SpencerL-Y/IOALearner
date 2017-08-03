@@ -13,7 +13,7 @@ public class AutoIAGeneratorTest {
 		
 		
 		for(int i = 0; i < 100; i++){
-			String CE = "";
+			String[] CE = {""};
 			InterfaceAutomaton oIA = AutoIAGenerator.generate(3);
 			InterfaceAutomaton iIA = AutoIAGenerator.generate(3);
 			if(SimulationChecker.alternatingSimCheck(oIA,iIA, CE)){
