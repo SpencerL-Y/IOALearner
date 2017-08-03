@@ -21,19 +21,34 @@ public class IATeacherImpl implements IATeacher {
 	
 	@Override
 	public void reset() {
-		this.currentState = this.learningTarget.getInitial().getIndex();
+		this.currentState = this.learningTarget
+								.getInitial()
+								.getIndex();
 	}
 
 	@Override
-	public int getOutput(int letter) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int getOutput() {
+		assert this.learningTarget
+				   .getState(currentState)
+				   .isOutputDetermined();
+		int result = this.learningTarget
+						 .getOutputLetter(currentState);
+		this.step(result);
+		return result;
 	}
 
 	@Override
 	public int step(int letter) {
-		// TODO Auto-generated method stub
+		this.currentState = this.learningTarget
+								.getState(this.currentState)
+								.getSuccessor(letter);
 		return 0;
+	}
+
+	@Override
+	public String equivalenceQuery(InterfaceAutomaton hypothesis) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

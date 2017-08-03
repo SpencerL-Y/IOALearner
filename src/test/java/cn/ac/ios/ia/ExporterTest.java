@@ -28,6 +28,7 @@ public class ExporterTest {
 		IA.getState(2).addTransition(1, 2);
 		IA.getState(3).addTransition(0, 3);
 		IA.getState(2).addTransition(input.getAPSize() + 1, 3);
+		IA.getState(2).addTransition(input.getAPSize() + 2, 1);
 		
 		InterfaceAutomaton IAs = IA;
 		IAs.addDelta();
@@ -35,6 +36,8 @@ public class ExporterTest {
 		IAExporterDOT.export(IA);
 		IAExporterDOT.export(IAs);
 		System.out.println(IA.isDeterministic());
+		System.out.println(IA.getState(1).isOutputDetermined());
+		System.out.println("It is not possible that " + IA.getState(2).isOutputDetermined());
 	}
 	
 }
