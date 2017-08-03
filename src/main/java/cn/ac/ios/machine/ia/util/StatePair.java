@@ -78,7 +78,7 @@ public class StatePair {
 		return tempList;
 	}
 	
-	private Boolean iAltSimCheck(Boolean grid[][], String CE){
+	private Boolean iAltSimCheck(Boolean grid[][], String[] CE){
 		for(int i = 0; i < this.IState.getInApSize(); i++){
 			Boolean result = this.inputStep(i);
 			if(result){
@@ -86,19 +86,19 @@ public class StatePair {
 					StatePair p = itr.next();
 					result = result && p.oAltSimCheck(grid, CE) && p.iAltSimCheck(grid, CE);
 					if(!result){
-						CE = i + CE;
+						CE[0] = i + CE[0];
 						return result;
 					}
 				}
 			} else {
-				CE = i + CE;
+				CE[0] = i + CE[0];
 				return result;
 			}
 		}
 		return true;
 	}
 	
-	private Boolean oAltSimCheck(Boolean grid[][], String CE){
+	private Boolean oAltSimCheck(Boolean grid[][], String[] CE){
 		for(int i = this.OState.getInApSize(); i < this.OState.getTotalApSize()+1; i++){
 			Boolean result = this.outputStep(i);
 			if(result){
@@ -106,19 +106,19 @@ public class StatePair {
 					StatePair p = itr.next();
 					result = result && p.oAltSimCheck(grid, CE) && p.iAltSimCheck(grid, CE);
 					if(!result){
-						CE = i + CE;
+						CE[0] = i + CE[0];
 						return result;
 					}
 				}
 			} else {
-				CE = i + CE;
+				CE[0] = i + CE[0];
 				return result;
 			}
 		}
 		return true;
 	}
 	
-	public Boolean alterSimCheck(Boolean grid[][], String CE){
+	public Boolean alterSimCheck(Boolean grid[][], String[] CE){
 		assert this.OState.isInitial(this.OState.getIndex());
 		assert this.IState.isInitial(this.IState.getIndex());
 		return this.iAltSimCheck(grid, CE) && this.oAltSimCheck(grid, CE);
@@ -130,7 +130,7 @@ public class StatePair {
 	
 	
 	
-	private Boolean iAISimCheck(Boolean grid[][], String CE){
+	private Boolean iAISimCheck(Boolean grid[][], String[] CE){
 		for(int i = 0; i < this.IState.getInApSize(); i++){
 			Boolean result = this.inputStep(i);
 			if(result){
@@ -138,19 +138,19 @@ public class StatePair {
 					StatePair p = itr.next();
 					result = result && p.aAISimCheck(grid, CE) && p.iAISimCheck(grid, CE);
 					if(!result){
-						CE = i + CE;
+						CE[0] = i + CE[0];
 						return result;
 					}
 				}
 			} else {
-				CE = i + CE;
+				CE[0] = i + CE[0];
 				return result;
 			}
 		}
 		return true;
 	}
 	
-	private Boolean aAISimCheck(Boolean grid[][], String CE){
+	private Boolean aAISimCheck(Boolean grid[][], String[] CE){
 		for(int i = 0; i < this.OState.getTotalApSize()+1; i++){
 			Boolean result = this.outputStep(i);
 			if(result){
@@ -158,19 +158,19 @@ public class StatePair {
 					StatePair p = itr.next();
 					result = result && p.oAltSimCheck(grid,CE) && p.iAltSimCheck(grid, CE);
 					if(!result){
-						CE = i + CE;;
+						CE[0] = i + CE[0];
 						return result;
 					}
 				}
 			} else {
-				CE = i + CE;
+				CE[0] = i + CE[0];
 				return result;
 			}
 		}
 		return true;
 	}
 	
-	public Boolean AISimCheck(Boolean grid[][], String CE){
+	public Boolean AISimCheck(Boolean grid[][], String[] CE){
 		assert this.OState.isInitial(this.OState.getIndex());
 		assert this.IState.isInitial(this.IState.getIndex());
 		return this.iAISimCheck(grid, CE) && this.aAISimCheck(grid, CE);
@@ -179,7 +179,7 @@ public class StatePair {
 	
 	
 	
-	private Boolean iBiSimCheck(Boolean grid[][], String CE){
+	private Boolean iBiSimCheck(Boolean grid[][], String[] CE){
 		for(int i = 0; i < this.IState.getTotalApSize()+1; i++){
 			Boolean result = this.inputStep(i);
 			if(result){
@@ -187,19 +187,19 @@ public class StatePair {
 					StatePair p = itr.next();
 					result = result && p.aAISimCheck(grid, CE) && p.iAISimCheck(grid,CE);
 					if(!result){
-						CE = i + CE;
+						CE[0] = i + CE[0];
 						return result;
 					}
 				}
 			} else {
-				CE = i + CE;
+				CE[0] = i + CE[0];
 				return result;
 			}
 		}
 		return true;
 	}
 	
-	private Boolean oBiSimCheck(Boolean grid[][], String CE){
+	private Boolean oBiSimCheck(Boolean grid[][], String[] CE){
 		for(int i = 0; i < this.OState.getTotalApSize()+1; i++){
 			Boolean result = this.outputStep(i);
 			if(result){
@@ -208,19 +208,19 @@ public class StatePair {
 					result = result && p.oAltSimCheck(grid, CE) && p.iAltSimCheck(grid, CE);
 					
 					if(!result){
-						CE = i + CE;
+						CE[0] = i + CE[0];
 						return result;
 					}
 				}
 			} else {
-				CE = i + CE;
+				CE[0] = i + CE[0];
 				return result;
 			}
 		}
 		return true;
 	}
 	
-	public Boolean bisimulationCheck(Boolean grid[][], String CE){
+	public Boolean bisimulationCheck(Boolean grid[][], String[] CE){
 		assert this.OState.isInitial(this.OState.getIndex());
 		assert this.IState.isInitial(this.IState.getIndex());
 		return this.iBiSimCheck(grid, CE) && this.oBiSimCheck(grid,CE);

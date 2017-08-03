@@ -3,7 +3,7 @@ package cn.ac.ios.machine.ia.util;
 import cn.ac.ios.machine.ia.InterfaceAutomaton;
 
 public class SimulationChecker {
-	public static Boolean alternatingSimCheck(InterfaceAutomaton oIA, InterfaceAutomaton iIA, String CE){
+	public static Boolean alternatingSimCheck(InterfaceAutomaton oIA, InterfaceAutomaton iIA, String[] CE){
 		Boolean grid[][] = new Boolean[oIA.getStateSize()][iIA.getStateSize()];
 		for(int i = 0; i < oIA.getStateSize(); i++){
 			for(int j = 0; j < iIA.getStateSize(); j++){
@@ -14,7 +14,7 @@ public class SimulationChecker {
 		return ip.alterSimCheck(grid, CE);
 	}
 	
-	public static Boolean AISimCheck(InterfaceAutomaton aIA, InterfaceAutomaton iIA, String CE){
+	public static Boolean AISimCheck(InterfaceAutomaton aIA, InterfaceAutomaton iIA, String[] CE){
 		Boolean grid[][] = new Boolean[aIA.getStateSize()][iIA.getStateSize()];
 		for(int i = 0; i < aIA.getStateSize(); i++){
 			for(int j = 0; j < iIA.getStateSize(); j++){
@@ -25,7 +25,7 @@ public class SimulationChecker {
 		return ip.AISimCheck(grid, CE);
 	}
 	
-	public static Boolean alternatingSimCheckWithDelta(InterfaceAutomaton oIA, InterfaceAutomaton iIA, String CE){
+	public static Boolean alternatingSimCheckWithDelta(InterfaceAutomaton oIA, InterfaceAutomaton iIA, String[] CE){
 		Boolean grid[][] = new Boolean[oIA.getStateSize()][iIA.getStateSize()];
 		for(int i = 0; i < oIA.getStateSize(); i++){
 			for(int j = 0; j < iIA.getStateSize(); j++){
@@ -45,7 +45,7 @@ public class SimulationChecker {
 		
 	}
 	
-	public static Boolean AISimCheckWithDelta(InterfaceAutomaton aIA, InterfaceAutomaton iIA, String CE){
+	public static Boolean AISimCheckWithDelta(InterfaceAutomaton aIA, InterfaceAutomaton iIA, String[] CE){
 		Boolean grid[][] = new Boolean[aIA.getStateSize()][iIA.getStateSize()];
 		for(int i = 0; i < aIA.getStateSize(); i++){
 			for(int j = 0; j < iIA.getStateSize(); j++){
@@ -65,7 +65,7 @@ public class SimulationChecker {
 		return result;
 	}
 	
-	public static Boolean bisimulationCheck(InterfaceAutomaton aIA, InterfaceAutomaton iIA, String CE){
+	public static Boolean bisimulationCheck(InterfaceAutomaton aIA, InterfaceAutomaton iIA, String[] CE){
 		Boolean grid[][] = new Boolean[aIA.getStateSize()][iIA.getStateSize()];
 		for(int i = 0; i < aIA.getStateSize(); i++){
 			for(int j = 0; j < iIA.getStateSize(); j++){
