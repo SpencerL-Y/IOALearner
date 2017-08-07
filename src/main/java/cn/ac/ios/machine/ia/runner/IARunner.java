@@ -1,8 +1,8 @@
-package cn.ac.ios.machine.ia.teacher;
+package cn.ac.ios.machine.ia.runner;
 
 import cn.ac.ios.machine.ia.InterfaceAutomaton;
 
-public interface IATeacher {
+public interface IARunner {
 
 	void reset();
 	int getOutput();

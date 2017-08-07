@@ -1,11 +1,11 @@
-package cn.ac.ios.machine.ia.teacher;
+package cn.ac.ios.machine.ia.runner;
 
 import cn.ac.ios.machine.ia.DIAImpl;
 import cn.ac.ios.machine.ia.InterfaceAutomaton;
 import cn.ac.ios.machine.ia.util.SimulationChecker;
 import cn.ac.ios.words.APList;
 
-public class IATeacherImpl implements IATeacher {
+public class IARunnerImpl implements IARunner {
 	
 	public final InterfaceAutomaton learningTarget;
 	public int currentState;
@@ -13,7 +13,7 @@ public class IATeacherImpl implements IATeacher {
 	public APList oAp;
 	
 	
-	public IATeacherImpl(DIAImpl target){
+	public IARunnerImpl(DIAImpl target){
 		this.learningTarget =  target;
 		this.currentState = target.getInitial().getIndex();
 		this.iAp = target.getInAPs();

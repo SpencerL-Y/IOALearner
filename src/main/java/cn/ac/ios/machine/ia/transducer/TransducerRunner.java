@@ -2,8 +2,8 @@ package cn.ac.ios.machine.ia.transducer;
 
 import cn.ac.ios.machine.ia.DIAImpl;
 import cn.ac.ios.machine.ia.InterfaceAutomaton;
-import cn.ac.ios.machine.ia.teacher.IATeacher;
-import cn.ac.ios.machine.ia.teacher.IATeacherImpl;
+import cn.ac.ios.machine.ia.runner.IARunner;
+import cn.ac.ios.machine.ia.runner.IARunnerImpl;
 import cn.ac.ios.machine.ia.util.Converter;
 import cn.ac.ios.machine.ia.util.SimulationChecker;
 import cn.ac.ios.machine.mealy4ia.MMForIA;
@@ -11,15 +11,15 @@ import cn.ac.ios.words.APList;
 import cn.ac.ios.words.Alphabet;
 import cn.ac.ios.words.Word;
 
-public class TransducerTeacher {
+public class TransducerRunner {
 	public InterfaceAutomaton  learningPurpose;
 	public int currentState; 
-	public IATeacher teacher;
+	public IARunner teacher;
 	public APList iAp;
 	public APList oAp;
-	public TransducerTeacher (DIAImpl lp, DIAImpl tg){
+	public TransducerRunner (DIAImpl lp, DIAImpl tg){
 		this.learningPurpose = lp;
-		this.teacher = new IATeacherImpl(tg);
+		this.teacher = new IARunnerImpl(tg);
 		this.currentState = lp.getInitial().getIndex();
 		this.iAp = lp.getInAPs();
 		this.oAp = lp.getOutAPs();
@@ -30,7 +30,7 @@ public class TransducerTeacher {
 		this.resetTeacher();
 	}
 	
-	public int transducerStep(int letter){
+	private int transducerStep(int letter){
 		if(letter <this.learningPurpose.getInApSize()){
 			if(this.learningPurpose.getState(this.currentState).isEnable(letter)){
 				this.currentState = this.learningPurpose
@@ -50,7 +50,7 @@ public class TransducerTeacher {
 		}
 	}
 	
-	public int getOutputLetterFromTeacher(){
+	private int getOutputLetterFromTeacher(){
 		return this.teacher.getOutput() - this.iAp.size();
 	}
 	
