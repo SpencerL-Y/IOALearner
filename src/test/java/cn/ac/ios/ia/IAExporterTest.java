@@ -5,7 +5,7 @@ import cn.ac.ios.machine.ia.IAExporterDOT;
 import cn.ac.ios.machine.ia.InterfaceAutomaton;
 import cn.ac.ios.words.Alphabet;
 
-public class ExporterTest {
+public class IAExporterTest {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
