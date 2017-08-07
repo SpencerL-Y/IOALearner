@@ -15,17 +15,11 @@
 /* along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 package cn.ac.ios.dfa;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
 import cn.ac.ios.mealy.InputHelper;
 import cn.ac.ios.oracle.MembershipOracle;
 import cn.ac.ios.query.Query;
 import cn.ac.ios.table.HashableValue;
 import cn.ac.ios.table.HashableValueBoolean;
-import cn.ac.ios.table.HashableValueInt;
-import cn.ac.ios.words.Alphabet;
 import cn.ac.ios.words.Word;
 
 public class MembershipOracleImpl implements MembershipOracle<HashableValue> {
