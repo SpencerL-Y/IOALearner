@@ -2,7 +2,6 @@ package cn.ac.ios.machine.ia.util;
 
 import cn.ac.ios.machine.ia.DIAImpl;
 import cn.ac.ios.machine.ia.InterfaceAutomaton;
-import cn.ac.ios.machine.mealy.MealyMachine;
 import cn.ac.ios.machine.mealy4ia.MMForIA;
 import cn.ac.ios.words.Alphabet;
 
