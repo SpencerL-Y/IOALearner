@@ -6,7 +6,7 @@ import cn.ac.ios.machine.ia.InterfaceAutomaton;
 import cn.ac.ios.machine.ia.util.SimulationChecker;
 import cn.ac.ios.words.Alphabet;
 
-public class utilTest {
+public class IAutilTest {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
