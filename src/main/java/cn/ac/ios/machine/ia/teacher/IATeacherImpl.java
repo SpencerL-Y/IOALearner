@@ -39,11 +39,10 @@ public class IATeacherImpl implements IATeacher {
 	}
 
 	@Override
-	public int step(int letter) {
+	public void step(int letter) {
 		this.currentState = this.learningTarget
 								.getState(this.currentState)
 								.getSuccessor(letter);
-		return 0;
 	}
 
 	@Override
@@ -54,6 +53,11 @@ public class IATeacherImpl implements IATeacher {
 		} else {
 			return CE[0];
 		}
+	}
+
+	@Override
+	public int getCurrentState() {
+		return this.currentState;
 	}
 
 }

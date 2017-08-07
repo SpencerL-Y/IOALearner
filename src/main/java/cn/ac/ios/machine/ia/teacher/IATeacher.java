@@ -6,7 +6,8 @@ public interface IATeacher {
 
 	void reset();
 	int getOutput();
-	int step(int letter);
+	int getCurrentState();
+	void step(int letter);
 	
 	String equivalenceQuery(InterfaceAutomaton hypothesis);
 }

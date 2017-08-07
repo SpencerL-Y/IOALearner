@@ -26,14 +26,14 @@ public class AutoIAGenerator {
 		for(int state = 0; state < stateSize; state++){
 			for(int inA = 0; inA < iAp.getAPSize(); inA++){
 				Random r = new Random();
-				if(r.nextBoolean()){
-					result.getState(state).addTransition(inA, r.nextInt(stateSize));
-				}
+				result.getState(state).addTransition(inA, r.nextInt(stateSize));
+				
 			}
 			for(int outA = 0; outA < oAp.getAPSize(); outA++){
 				Random r = new Random();
 				if(r.nextBoolean()){
 					result.getState(state).addTransition(outA+iAp.getAPSize(), r.nextInt(stateSize));
+					break;
 				}
 			}
 		}
