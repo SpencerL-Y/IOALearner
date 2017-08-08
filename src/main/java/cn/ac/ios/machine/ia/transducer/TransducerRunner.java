@@ -6,7 +6,7 @@ import cn.ac.ios.machine.ia.runner.IARunner;
 import cn.ac.ios.machine.ia.runner.IARunnerImpl;
 import cn.ac.ios.machine.ia.util.Converter;
 import cn.ac.ios.machine.ia.util.SimulationChecker;
-import cn.ac.ios.machine.mealy4ia.MMForIA;
+import cn.ac.ios.machine.mealy.MealyMachine;
 import cn.ac.ios.words.APList;
 import cn.ac.ios.words.Alphabet;
 import cn.ac.ios.words.Word;
@@ -14,12 +14,12 @@ import cn.ac.ios.words.Word;
 public class TransducerRunner {
 	public InterfaceAutomaton  learningPurpose;
 	public int currentState; 
-	public IARunner teacher;
+	public IARunner runner;
 	public APList iAp;
 	public APList oAp;
 	public TransducerRunner (DIAImpl lp, DIAImpl tg){
 		this.learningPurpose = lp;
-		this.teacher = new IARunnerImpl(tg);
+		this.runner = new IARunnerImpl(tg);
 		this.currentState = lp.getInitial().getIndex();
 		this.iAp = lp.getInAPs();
 		this.oAp = lp.getOutAPs();
@@ -36,13 +36,14 @@ public class TransducerRunner {
 				this.currentState = this.learningPurpose
 										.getState(this.currentState)
 										.getSuccessor(letter);
-				this.teacher.step(letter);
+				this.runner.step(letter);
 				return this.oAp.size()+2;//TODO: return the character +
 			} else {
 				return this.oAp.size()+1;//TODO: return the character -
 			}
 		} else {
 			int outLetter = this.getOutputLetterFromTeacher();
+			System.out.println(outLetter);
 			this.currentState = this.learningPurpose
 									.getState(this.currentState)
 									.getSuccessor(outLetter);
@@ -51,11 +52,11 @@ public class TransducerRunner {
 	}
 	
 	private int getOutputLetterFromTeacher(){
-		return this.teacher.getOutput() - this.iAp.size();
+		return this.runner.getOutput() - this.iAp.size();
 	}
 	
-	public void resetTeacher(){
-		this.teacher.reset();
+	private void resetTeacher(){
+		this.runner.reset();
 	}
 	
 	public int getOutputLetterFromWord(Word word){
@@ -67,13 +68,13 @@ public class TransducerRunner {
 		return returnLetter;
 	}
 	
-	public String transducerEquiQuery(MMForIA hypothesis){
+	public String transducerEquiQuery(MealyMachine hypothesis){
 		//TODO: equivalence
 		String[] CE = {""};
 		Boolean lpSat = SimulationChecker.AISimCheck(Converter.MMToIA(hypothesis), 
 													 this.learningPurpose, CE);
 		if(lpSat){
-			String ltgCE = this.teacher.equivalenceQuery(Converter.MMToIA(hypothesis));
+			String ltgCE = this.runner.equivalenceQuery(Converter.MMToIA(hypothesis));
 			return ltgCE;
 		} else {
 			return CE[0];

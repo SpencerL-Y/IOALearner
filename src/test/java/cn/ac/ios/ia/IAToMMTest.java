@@ -4,8 +4,8 @@ import cn.ac.ios.machine.ia.DIAImpl;
 import cn.ac.ios.machine.ia.IAExporterDOT;
 import cn.ac.ios.machine.ia.InterfaceAutomaton;
 import cn.ac.ios.machine.ia.util.Converter;
+import cn.ac.ios.machine.mealy.MealyMachine;
 import cn.ac.ios.machine.mealy4ia.MMExporterForIA;
-import cn.ac.ios.machine.mealy4ia.MMForIA;
 import cn.ac.ios.words.Alphabet;
 
 public class IAToMMTest {
@@ -32,7 +32,7 @@ public class IAToMMTest {
 		IA.getState(2).addTransition(input.getAPSize() + 1, 3);
 		IAExporterDOT.export(IA);
 		
-		MMForIA M = Converter.IAToMM(IA);
+		MealyMachine M = Converter.IAToMM(IA);
 		M.getState(M.getInitialState()).getOutput(0);
 		MMExporterForIA.exporter(M);
 		

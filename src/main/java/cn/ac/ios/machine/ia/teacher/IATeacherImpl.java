@@ -1,8 +1,9 @@
 package cn.ac.ios.machine.ia.teacher;
 
+import cn.ac.ios.machine.Machine;
 import cn.ac.ios.machine.ia.DIAImpl;
 import cn.ac.ios.machine.ia.transducer.TransducerRunner;
-import cn.ac.ios.machine.mealy4ia.MMForIA;
+import cn.ac.ios.machine.mealy.MealyMachine;
 import cn.ac.ios.query.Query;
 import cn.ac.ios.query.QuerySimple;
 import cn.ac.ios.table.HashableValue;
@@ -16,14 +17,14 @@ public class IATeacherImpl implements IATeacher {
 	
 	private TransducerRunner runner;
 	public Alphabet mealyInAlpha;
-	public Alphabet outAlpha;
-	public IATeacherImpl(DIAImpl learningPurpose, DIAImpl learningTarget, Alphabet input, Alphabet output){
+	public Alphabet mealyOutAlpha;
+	public IATeacherImpl(DIAImpl learningPurpose, DIAImpl learningTarget, Alphabet mmInput, Alphabet mmOutput){
 		runner = new TransducerRunner(learningPurpose, learningTarget);
-		mealyInAlpha = input;
-		outAlpha = output;
+		mealyInAlpha = mmInput;
+		mealyOutAlpha = mmOutput;
 	}
 	
-	private Word parseString(String counterexample){
+	public Word parseString(String counterexample){
 		APList aps = runner.iAp;
 		String[] wordStr = counterexample.split("");
 		int[] wordArr = new int[wordStr.length];
@@ -38,7 +39,7 @@ public class IATeacherImpl implements IATeacher {
 	}
 	
 	@Override
-	public Query<HashableValue> answerEquivalenceQuery(MMForIA hypothesis) {
+	public Query<HashableValue> answerEquivalenceQuery(MealyMachine hypothesis) {
 		String counterexample = this.runner.transducerEquiQuery(hypothesis);
 		boolean isEq = false;
 		Word wordCE = mealyInAlpha.getEmptyWord();

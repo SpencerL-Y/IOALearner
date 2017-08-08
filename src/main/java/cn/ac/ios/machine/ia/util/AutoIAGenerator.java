@@ -8,8 +8,8 @@ import cn.ac.ios.words.APList;
 import cn.ac.ios.words.Alphabet;
 
 public class AutoIAGenerator {
-	public static InterfaceAutomaton generate(APList input, APList output,int stateSize){
-		InterfaceAutomaton result = new DIAImpl(input, output);
+	public static DIAImpl generate(APList input, APList output,int stateSize){
+		DIAImpl result = new DIAImpl(input, output);
 		for(int state = 0; state < stateSize; state++){
 			result.createState();
 		}

@@ -2,13 +2,13 @@ package cn.ac.ios.machine.ia.util;
 
 import cn.ac.ios.machine.ia.DIAImpl;
 import cn.ac.ios.machine.ia.InterfaceAutomaton;
-import cn.ac.ios.machine.mealy4ia.MMForIA;
+import cn.ac.ios.machine.mealy.MealyMachine;
 import cn.ac.ios.words.Alphabet;
 
 public class Converter {
 	
 	
-	public static MMForIA IAToMM(InterfaceAutomaton IA){
+	public static MealyMachine IAToMM(InterfaceAutomaton IA){
 		IA.addDelta();
 		Alphabet inputAp = new Alphabet(Integer.class);
 		Alphabet outputAp = new Alphabet(Integer.class);
@@ -21,7 +21,7 @@ public class Converter {
 			outputAp.addLetter(outA);
 		}
 		
-		MMForIA resultMM = new MMForIA(inputAp.getAPs(), outputAp.getAPs());
+		MealyMachine resultMM = new MealyMachine(inputAp.getAPs(), outputAp.getAPs());
 		for(int state = 0; state < IA.getStateSize(); state++){
 			resultMM.createState();
 		}
@@ -58,7 +58,7 @@ public class Converter {
 		return resultMM;
 	}
 
-	public static InterfaceAutomaton MMToIA(MMForIA MM){
+	public static InterfaceAutomaton MMToIA(MealyMachine MM){
 		Alphabet inputAp = new Alphabet(Integer.class);
 		Alphabet outputAp = new Alphabet(Integer.class);
 		for(int i = 0; i < MM.getInAPs().size()-1; i++){
