@@ -43,7 +43,7 @@ public class TransducerRunner {
 			}
 		} else {
 			int outLetter = this.getOutputLetterFromTeacher();
-			System.out.println(outLetter);
+			//System.out.println(outLetter);
 			this.currentState = this.learningPurpose
 									.getState(this.currentState)
 									.getSuccessor(outLetter);
@@ -52,6 +52,7 @@ public class TransducerRunner {
 	}
 	
 	private int getOutputLetterFromTeacher(){
+		
 		return this.runner.getOutput() - this.iAp.size();
 	}
 	
@@ -64,6 +65,7 @@ public class TransducerRunner {
 			this.transducerStep(word.getLetter(letterNr));
 		}
 		int returnLetter = this.transducerStep(word.getLetter(word.length()-1));
+		System.out.println("return letter is: " + returnLetter);
 		this.reset();
 		return returnLetter;
 	}

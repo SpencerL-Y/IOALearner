@@ -30,7 +30,7 @@ public class IATeacherImpl implements IATeacher {
 		int[] wordArr = new int[wordStr.length];
 		
 		for(int letterNr = 0; letterNr < wordStr.length; letterNr++){
-			wordArr[letterNr] = aps.indexOf(Integer.parseInt(wordStr[letterNr]));
+			wordArr[letterNr] = Integer.parseInt(wordStr[letterNr]);
 		}
 		
 		
@@ -46,6 +46,7 @@ public class IATeacherImpl implements IATeacher {
 		if(counterexample == null){
 			isEq = true;
 		} else {
+			System.out.println(counterexample);
 			wordCE = this.parseString(counterexample);
 		}
 		Query<HashableValue> ceQuery = new QuerySimple<>(wordCE);
@@ -59,6 +60,7 @@ public class IATeacherImpl implements IATeacher {
 	@Override
 	public HashableValue answerMembershipQuery(Query<HashableValue> query) {
 		Word word = query.getQueriedWord();
+		System.out.println("membership word: "+ word.toString());
 		int outputLetter = this.runner.getOutputLetterFromWord(word);
 		
 		return new HashableValueInt(outputLetter);

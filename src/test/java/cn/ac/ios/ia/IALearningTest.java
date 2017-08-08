@@ -2,6 +2,7 @@ package cn.ac.ios.ia;
 
 import cn.ac.ios.learner.table.mealy.LearnerMealyTable;
 import cn.ac.ios.machine.ia.DIAImpl;
+import cn.ac.ios.machine.ia.IAExporterDOT;
 import cn.ac.ios.machine.ia.oracle.IAEquivalenceOracleImpl;
 import cn.ac.ios.machine.ia.oracle.IAMembershipOracleImpl;
 import cn.ac.ios.machine.ia.teacher.IATeacher;
@@ -48,6 +49,7 @@ public class IALearningTest {
 		
 		//learning target generation
 		DIAImpl tg = AutoIAGenerator.generate(input.getAPs(), output.getAPs(), 5);
+		IAExporterDOT.export(tg);
 		IATeacher teacher = new IATeacherImpl(lp, tg, mealyIn, mealyOut);
 		
 		MembershipOracle<HashableValue> membershipOracle = new IAMembershipOracleImpl(teacher);
@@ -68,6 +70,7 @@ public class IALearningTest {
 			result = equivalenceOracle.answerEquivalenceQuery(resultMachine);
 			if(result) break;
 			ceQuery = teacher.answerEquivalenceQuery(resultMachine);
+			System.out.println(ceQuery.getQueriedWord().toString());
 			ceQuery.answerQuery(teacher.answerMembershipQuery(ceQuery));
 			learner.refineHypothesis(ceQuery);
 		}
