@@ -25,6 +25,7 @@ public class AutoIAGeneratorTest {
 			InterfaceAutomaton oIA = AutoIAGenerator.generate(input.getAPs(), output.getAPs(), 3);
 			InterfaceAutomaton iIA = AutoIAGenerator.generate(input.getAPs(), output.getAPs(), 3);
 			if(SimulationChecker.alternatingSimCheck(oIA,iIA, CE)){
+				iIA.addDelta(); oIA.addDelta();
 				IAExporterDOT.export(oIA);
 				IAExporterDOT.export(iIA);
 				System.out.println("Everything is okay");

@@ -24,7 +24,7 @@ public class AutoIAGenerator {
 			for(int outA = 0; outA < output.size(); outA++){
 				Random r = new Random();
 				if(r.nextBoolean()){
-					result.getState(state).addTransition(outA+output.size(), r.nextInt(stateSize));
+					result.getState(state).addTransition(outA+input.size(), r.nextInt(stateSize));
 					break;
 				}
 			}

@@ -24,7 +24,6 @@ public class IATeacherImpl implements IATeacher {
 	}
 	
 	public Word parseString(String counterexample){
-		APList aps = runner.iAp;
 		String[] wordStr = counterexample.split("");
 		int[] wordArr = new int[wordStr.length];
 		
@@ -46,7 +45,7 @@ public class IATeacherImpl implements IATeacher {
 			
 			isEq = true;
 		} else {
-			System.out.println(counterexample);
+			System.out.println("counterexample: " + counterexample);
 			wordCE = this.parseString(counterexample);
 		}
 		Query<HashableValue> ceQuery = new QuerySimple<>(wordCE);

@@ -43,7 +43,7 @@ public class TransducerRunner {
 			}
 		} else {
 			int outLetter = this.getOutputLetterFromTeacher();
-			System.out.println(outLetter);
+			//System.out.println(outLetter);
 			this.currentState = this.learningPurpose
 									.getState(this.currentState)
 									.getSuccessor(outLetter);

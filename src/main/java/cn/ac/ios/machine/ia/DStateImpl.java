@@ -22,7 +22,7 @@ public class DStateImpl extends StateImpl{
 			this.trans[letter] = new DTransImpl(letter, IA);
 			this.trans[letter].setSuccessor(state);
 		} else {
-			System.out.println("transition adding error: determinism violation");
+			//System.out.println("transition adding error: determinism violation");
 		}
 		
 

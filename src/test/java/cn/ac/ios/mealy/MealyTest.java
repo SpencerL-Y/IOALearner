@@ -59,7 +59,7 @@ public class MealyTest {
 			}
 			
 			EquivalenceOracle<Machine, Boolean> equivalenceOracle = new EquivalenceOracleImpl();
-			result = equivalenceOracle.answerEquivalenceQuery(model);
+			result =  equivalenceOracle.answerEquivalenceQuery(model);
 			if(result == true) break;
 			ceQuery = InputHelper.getCeWord(input);
 			System.out.println("What is the output of " + ceQuery.getQueriedWord().toStringWithAlphabet() + "?");

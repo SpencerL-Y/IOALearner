@@ -70,9 +70,10 @@ public class IALearningTest {
 			EquivalenceOracle<MealyMachine, Boolean> equivalenceOracle = new IAEquivalenceOracleImpl(teacher);
 			result = equivalenceOracle.answerEquivalenceQuery(resultMachine);
 			if(result) {
+				System.out.println("equivalence result is: " + result);
 				break;
 			}
-			System.out.println(result);
+			System.out.println("equivalence result is: " + result);
 		    ceQuery = teacher.answerEquivalenceQuery(resultMachine);
 			//System.out.println(ceQuery.getQueriedWord().toString());
 			ceQuery.answerQuery(teacher.answerMembershipQuery(ceQuery));
