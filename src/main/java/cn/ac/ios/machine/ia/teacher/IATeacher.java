@@ -9,4 +9,5 @@ public interface IATeacher {
 	public Query<HashableValue> answerEquivalenceQuery(MealyMachine machine);
 	public HashableValue answerMembershipQuery(Query<HashableValue> query);
 	
+	
 }

@@ -1,6 +1,5 @@
 package cn.ac.ios.machine.ia.teacher;
 
-import cn.ac.ios.machine.Machine;
 import cn.ac.ios.machine.ia.DIAImpl;
 import cn.ac.ios.machine.ia.transducer.TransducerRunner;
 import cn.ac.ios.machine.mealy.MealyMachine;
@@ -44,6 +43,7 @@ public class IATeacherImpl implements IATeacher {
 		boolean isEq = false;
 		Word wordCE = mealyInAlpha.getEmptyWord();
 		if(counterexample == null){
+			
 			isEq = true;
 		} else {
 			System.out.println(counterexample);
@@ -62,8 +62,8 @@ public class IATeacherImpl implements IATeacher {
 		Word word = query.getQueriedWord();
 		System.out.println("membership word: "+ word.toString());
 		int outputLetter = this.runner.getOutputLetterFromWord(word);
-		
 		return new HashableValueInt(outputLetter);
 	}
+
 
 }
