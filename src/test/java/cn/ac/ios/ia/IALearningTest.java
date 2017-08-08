@@ -38,7 +38,7 @@ public class IALearningTest {
 		mealyOut.addLetter(2);
 		mealyOut.addLetter(3);// delta
 		mealyOut.addLetter(4);//-
-		mealyOut.addLetter(5);//+
+		mealyOut.addLetter(5);//+ 
 		
 		//learning purpose definition
 		DIAImpl lp = new DIAImpl(input.getAPs(), output.getAPs());
@@ -46,9 +46,10 @@ public class IALearningTest {
 		for(int letter = 0; letter < input.getAPSize() + output.getAPSize() + 1; letter++){
 			lp.getState(0).addTransition(letter, 0);
 		}
-		
+		//IAExporterDOT.export(lp);
 		//learning target generation
-		DIAImpl tg = AutoIAGenerator.generate(input.getAPs(), output.getAPs(), 5);
+		DIAImpl tg = AutoIAGenerator.generate(input.getAPs(), output.getAPs(), 4);
+		tg.addDelta();
 		IAExporterDOT.export(tg);
 		IATeacher teacher = new IATeacherImpl(lp, tg, mealyIn, mealyOut);
 		
@@ -68,10 +69,14 @@ public class IALearningTest {
 			
 			EquivalenceOracle<MealyMachine, Boolean> equivalenceOracle = new IAEquivalenceOracleImpl(teacher);
 			result = equivalenceOracle.answerEquivalenceQuery(resultMachine);
-			if(result) break;
-			ceQuery = teacher.answerEquivalenceQuery(resultMachine);
-			System.out.println(ceQuery.getQueriedWord().toString());
+			if(result) {
+				break;
+			}
+			System.out.println(result);
+		    ceQuery = teacher.answerEquivalenceQuery(resultMachine);
+			//System.out.println(ceQuery.getQueriedWord().toString());
 			ceQuery.answerQuery(teacher.answerMembershipQuery(ceQuery));
+			System.out.println("refine word: " +ceQuery.getQueriedWord().toString());
 			learner.refineHypothesis(ceQuery);
 		}
 		
