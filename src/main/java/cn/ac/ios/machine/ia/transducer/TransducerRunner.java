@@ -79,7 +79,7 @@ public class TransducerRunner {
 			String ltgCE = this.runner.equivalenceQuery(Converter.MMToIA(hypothesis));
 			return ltgCE;
 		} else {
-			return CE[0];
+			return null;
 		}
 	}
 	
