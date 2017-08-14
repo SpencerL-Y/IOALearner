@@ -22,8 +22,8 @@ public class AutoIAGeneratorTest {
 		
 		for(int i = 0; i < 100; i++){
 			String[] CE = {""};
-			InterfaceAutomaton oIA = AutoIAGenerator.generate(input.getAPs(), output.getAPs(), 3);
-			InterfaceAutomaton iIA = AutoIAGenerator.generate(input.getAPs(), output.getAPs(), 3);
+			InterfaceAutomaton oIA = AutoIAGenerator.generate(input.getAPs(), output.getAPs(), 8);
+			InterfaceAutomaton iIA = AutoIAGenerator.generate(input.getAPs(), output.getAPs(), 8);
 			if(SimulationChecker.alternatingSimCheck(oIA,iIA, CE)){
 				iIA.addDelta(); oIA.addDelta();
 				IAExporterDOT.export(oIA);
