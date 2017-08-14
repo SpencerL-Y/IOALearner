@@ -10,7 +10,7 @@ public class SimulationChecker {
 				grid[i][j] = false;
 			}
 		}
-		StatePair ip = new StatePair(oIA.getInitial(), iIA.getInitial());
+		StatePairImpl ip = new StatePairImpl(oIA.getInitial(), iIA.getInitial());
 		return ip.alterSimCheck(grid, CE);
 	}
 	
@@ -21,7 +21,7 @@ public class SimulationChecker {
 				grid[i][j] = false;
 			}
 		}
-		StatePair ip = new StatePair(aIA.getInitial(), iIA.getInitial());
+		StatePairImpl ip = new StatePairImpl(aIA.getInitial(), iIA.getInitial());
 		return ip.AISimCheck(grid, CE);
 	}
 	
@@ -38,7 +38,7 @@ public class SimulationChecker {
 		if(!iIA.isDeltaAdded()){
 			iIA.addDelta();
 		}
-		StatePair ip = new StatePair(oIA.getInitial(), iIA.getInitial());
+		StatePairImpl ip = new StatePairImpl(oIA.getInitial(), iIA.getInitial());
 		Boolean result = ip.alterSimCheck(grid, CE);
 		
 		return result;
@@ -59,7 +59,7 @@ public class SimulationChecker {
 			iIA.addDelta();
 		}
 		
-		StatePair ip = new StatePair(aIA.getInitial(), iIA.getInitial());
+		StatePairImpl ip = new StatePairImpl(aIA.getInitial(), iIA.getInitial());
 		Boolean result = ip.AISimCheck(grid, CE);
 		
 		return result;
@@ -72,7 +72,7 @@ public class SimulationChecker {
 				grid[i][j] = false;
 			}
 		}
-		StatePair ip = new StatePair(aIA.getInitial(), iIA.getInitial());
+		StatePairImpl ip = new StatePairImpl(aIA.getInitial(), iIA.getInitial());
 		Boolean result = ip.bisimulationCheck(grid, CE);
 		return result;
 	}

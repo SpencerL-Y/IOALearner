@@ -6,12 +6,12 @@ import java.util.List;
 
 import cn.ac.ios.machine.ia.State;
 
-public class StatePair {
+public class StatePairImpl implements StatePair{
 	
 	public final State OState;
 	public final State IState;
 	
-	public StatePair(State o, State i){
+	public StatePairImpl(State o, State i){
 		this.OState = o;
 		this.IState = i;
 	}
@@ -42,16 +42,16 @@ public class StatePair {
 		return true;
 	}
 	
-	private List<StatePair> oStepPair(int letter, Boolean grid[][]){
+	private List<StatePairImpl> oStepPair(int letter, Boolean grid[][]){
 		assert outputStep(letter);
-		List<StatePair> tempList = new ArrayList<StatePair>();
+		List<StatePairImpl> tempList = new ArrayList<StatePairImpl>();
 			if(this.OState.getSuccessors(letter).length() != 0 && 
 			   this.IState.getSuccessors(letter).length() != 0){
 				for(int j = 0; j < this.OState.getSuccessors(letter).length(); j++){
 					for(int k = 0; k < this.IState.getSuccessors(letter).length();k++){
 						if(this.OState.getSuccessors(letter).get(j) && 
 						   this.IState.getSuccessors(letter).get(k)){
-							StatePair p = new StatePair(this.OState.getIA().getState(j),
+							StatePairImpl p = new StatePairImpl(this.OState.getIA().getState(j),
 													    this.IState.getIA().getState(k));
 							if(!grid[p.OState.getIndex()][p.IState.getIndex()]){
 								grid[p.OState.getIndex()][p.IState.getIndex()] = true;
@@ -64,16 +64,16 @@ public class StatePair {
 		return tempList;
 	}
 	
-	private List<StatePair> iStepPair(int letter, Boolean grid[][]){
+	private List<StatePairImpl> iStepPair(int letter, Boolean grid[][]){
 		assert inputStep(letter);
-		List<StatePair> tempList = new ArrayList<StatePair>();
+		List<StatePairImpl> tempList = new ArrayList<StatePairImpl>();
 			if(this.OState.getSuccessors(letter).length() != 0 && 
 			   this.IState.getSuccessors(letter).length() != 0){
 				for(int j = 0; j < this.OState.getSuccessors(letter).length(); j++){
 					for(int k = 0; k < this.IState.getSuccessors(letter).length();k++){
 						if(this.OState.getSuccessors(letter).get(j) && 
 						this.IState.getSuccessors(letter).get(k)){
-						StatePair p = new StatePair(this.OState.getIA().getState(j),
+						StatePairImpl p = new StatePairImpl(this.OState.getIA().getState(j),
 													this.IState.getIA().getState(k));
 						if(!grid[p.OState.getIndex()][p.IState.getIndex()]){
 							grid[p.OState.getIndex()][p.IState.getIndex()] = true;
@@ -90,8 +90,8 @@ public class StatePair {
 		for(int i = 0; i < this.IState.getInApSize(); i++){
 			Boolean result = this.inputStep(i);
 			if(result){
-				for(Iterator<StatePair> itr = this.iStepPair(i,grid).iterator(); itr.hasNext();){
-					StatePair p = itr.next();
+				for(Iterator<StatePairImpl> itr = this.iStepPair(i,grid).iterator(); itr.hasNext();){
+					StatePairImpl p = itr.next();
 					result = result && p.oAltSimCheck(grid, CE) && p.iAltSimCheck(grid, CE);
 					if(!result){
 						CE[0] = getCEChara(i) + CE[0];
@@ -110,8 +110,8 @@ public class StatePair {
 		for(int i = this.OState.getInApSize(); i < this.OState.getTotalApSize()+1; i++){
 			Boolean result = this.outputStep(i);
 			if(result){
-				for(Iterator<StatePair> itr = this.oStepPair(i, grid).iterator(); itr.hasNext();){
-					StatePair p = itr.next();
+				for(Iterator<StatePairImpl> itr = this.oStepPair(i, grid).iterator(); itr.hasNext();){
+					StatePairImpl p = itr.next();
 					result = result && p.oAltSimCheck(grid, CE) && p.iAltSimCheck(grid, CE);
 					if(!result){
 						CE[0] = getCEChara(i) + CE[0];
@@ -142,8 +142,8 @@ public class StatePair {
 		for(int i = 0; i < this.IState.getInApSize(); i++){
 			Boolean result = this.inputStep(i);
 			if(result){
-				for(Iterator<StatePair> itr = this.iStepPair(i,grid).iterator(); itr.hasNext();){
-					StatePair p = itr.next();
+				for(Iterator<StatePairImpl> itr = this.iStepPair(i,grid).iterator(); itr.hasNext();){
+					StatePairImpl p = itr.next();
 					result = result && p.aAISimCheck(grid, CE) && p.iAISimCheck(grid, CE);
 					if(!result){
 						CE[0] = getCEChara(i) + CE[0];
@@ -162,8 +162,8 @@ public class StatePair {
 		for(int i = 0; i < this.OState.getTotalApSize()+1; i++){
 			Boolean result = this.outputStep(i);
 			if(result){
-				for(Iterator<StatePair> itr = this.oStepPair(i, grid).iterator(); itr.hasNext();){
-					StatePair p = itr.next();
+				for(Iterator<StatePairImpl> itr = this.oStepPair(i, grid).iterator(); itr.hasNext();){
+					StatePairImpl p = itr.next();
 					result = result && p.oAltSimCheck(grid,CE) && p.iAltSimCheck(grid, CE);
 					if(!result){
 						CE[0] = getCEChara(i) + CE[0];
@@ -191,8 +191,8 @@ public class StatePair {
 		for(int i = 0; i < this.IState.getTotalApSize()+1; i++){
 			Boolean result = this.inputStep(i);
 			if(result){
-				for(Iterator<StatePair> itr = this.iStepPair(i,grid).iterator(); itr.hasNext();){
-					StatePair p = itr.next();
+				for(Iterator<StatePairImpl> itr = this.iStepPair(i,grid).iterator(); itr.hasNext();){
+					StatePairImpl p = itr.next();
 					result = result && p.aAISimCheck(grid, CE) && p.iAISimCheck(grid,CE);
 					if(!result){
 						CE[0] = getCEChara(i) + CE[0];
@@ -211,8 +211,8 @@ public class StatePair {
 		for(int i = 0; i < this.OState.getTotalApSize()+1; i++){
 			Boolean result = this.outputStep(i);
 			if(result){
-				for(Iterator<StatePair> itr = this.oStepPair(i, grid).iterator(); itr.hasNext();){
-					StatePair p = itr.next();
+				for(Iterator<StatePairImpl> itr = this.oStepPair(i, grid).iterator(); itr.hasNext();){
+					StatePairImpl p = itr.next();
 					result = result && p.oAltSimCheck(grid, CE) && p.iAltSimCheck(grid, CE);
 					
 					if(!result){

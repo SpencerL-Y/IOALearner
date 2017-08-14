@@ -4,7 +4,7 @@ package cn.ac.ios.ia;
 import cn.ac.ios.machine.ia.IAExporterDOT;
 import cn.ac.ios.machine.ia.IAImpl;
 import cn.ac.ios.machine.ia.InterfaceAutomaton;
-import cn.ac.ios.machine.ia.util.StatePair;
+import cn.ac.ios.machine.ia.util.StatePairImpl;
 import cn.ac.ios.machine.ia.util.SimulationChecker;
 import cn.ac.ios.words.Alphabet;
 
@@ -48,7 +48,7 @@ public class AltSimTest {
 		IA1.addDelta();
 		IA2.addDelta();
 		
-		StatePair test = new StatePair(IA1.getInitial(),IA2.getInitial());
+		StatePairImpl test = new StatePairImpl(IA1.getInitial(),IA2.getInitial());
 		String[] counterExample = {""};
 		if(SimulationChecker.alternatingSimCheck(IA1, IA2, counterExample)){
 			System.out.println("Everything is okay");
