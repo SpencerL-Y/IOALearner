@@ -5,7 +5,8 @@ public class IAExporterDOT {
 		if(IA instanceof InterfaceAutomaton){
 			System.out.println("//Interface Automaton ");
 			System.out.println("digraph G {");
-			System.out.println("node [shape = doublecircle]; " + IA.getInitial().getIndex() + ";");
+			System.out.println(" " + IA.getStateSize()  + " [label=\"\", shape = plaintext];");
+			System.out.println(" " + IA.getStateSize() + " -> " + IA.getInitial().getIndex() + " [label=\"\"];");
 			System.out.println("node [shape = circle];");
 			for(int i = 0; i < IA.getStateSize(); i++){
 				for(int k = 0; k < IA.getTotalApSize()+ 1; k++){
@@ -14,7 +15,7 @@ public class IAExporterDOT {
 					}
 					for(int j = 0; j < IA.getState(i).getSuccessors(k).length(); j++){
 						if(IA.getState(i).getSuccessors(k).get(j)){
-							System.out.print(i + " -> " + j);
+							System.out.print(" " + i + " -> " + j);
 							if(k >= IA.getInApSize() && k < IA.getTotalApSize()){
 								System.out.println(" [ label = \"out:" + (k-IA.getInAPs().size()) + "\" ];");
 							} else if (k < IA.getInApSize() && k >= 0){
